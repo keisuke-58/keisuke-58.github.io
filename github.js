@@ -1,9 +1,14 @@
 'use strict';
 
+
 // ----------------------------------
 
 // IntersectionObserver
 let boxElement;
+let prevRatio = 0.0;
+let increasingColor = 'rgba(40, 40, 190, ratio)';
+let decreasingColor = 'rgba(190, 40, 40, ratio)';
+
 window.addEventListener('load', (event) => {
     boxElement = document.querySelector('#box');
     createObserver();
@@ -34,9 +39,6 @@ function buildThresholdList(){
     return thresholds;
 }
 
-let prevRatio = 0.0;
-let increasingColor = 'rgba(40, 40, 190, ratio)';
-let decreasingColor = 'rgba(190, 40, 40, ratio)';
 function handleIntersect(entries, observer){
     entries.forEach((entry) => {
         if(entry.intersectionRatio > prevRatio){
