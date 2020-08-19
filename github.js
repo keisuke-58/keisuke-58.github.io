@@ -1,26 +1,5 @@
 'use strict';
 
-let _global = {
-    options : {
-        MutationObserver : {
-            attributes : true,
-            attributeOldValue : true,
-            characterData : true,
-            characterDataOldValue : true,
-            childList : true,
-            subtree : true
-        },
-        IntersectionObserver : {
-            root : null,
-            rootMargin : '0px',
-            threshold : 1.0
-        }
-    }
-}
-
-console.log(_global);
-
-
 // ----------------------------------
 
 // IntersectionObserver
