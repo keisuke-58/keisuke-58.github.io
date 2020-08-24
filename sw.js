@@ -1,24 +1,46 @@
-self.addEventListener('install', function(e) {
- e.waitUntil(
-   caches.open('k-58-v1').then(function(cache) {
-     return cache.addAll([
-       '/index.html',
-       '/github.js',
-       '/style.css',
-       '/android-chrome-192x192.png',
-       '/android-chrome-512x512.png'
-     ]);
-   })
- );
+const CACHE_NAME = 'k-58-v1';
+const URLS_TO_CACHE = [
+    '/index.html',
+    '/github.js',
+    '/style.css',
+    '/android-chrome-192x192.png',
+    '/android-chrome-512x512.png'
+];
+
+// install
+self.addEventListener('install', (e) => {
+    e.waitUntil(
+        caches.open(CACHE_NAME).then((cache) => {
+            return cache.addAll(URLS_TO_CACHE);
+        })
+    );
 });
 
-self.addEventListener('fetch', function(e) {
-  console.log(e.request.url);
-  e.respondWith(
-    caches.match(e.request).then(function(response) {
-      return response || fetch(e.request);
-    })
-  );
+// fetch cache load
+self.addEventListener('fetch', (e) => {
+    console.log(e.request.url);
+    e.respondWith(
+        caches.match(e.request).then((response) => {
+            //return response || fetch(e.request);
+            if(response){
+                return response;   
+            }else{
+                let fetchRequest = e.request.clone();
+                return fetch(fetchRequest).then((response) => {
+                    if(!response || response.status !== 200 || response.type !== 'basic'){
+                        return response;
+                    }
+                    
+                    let responseToCache = response.clone();
+                    caches.open(CACHE_NAME).then((cache) => {
+                        cache.put(e.request, responseToCache);
+                    });
+                    
+                    return response;
+                })
+            }
+        })
+    );
 });
 
 // install
