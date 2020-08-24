@@ -1,5 +1,6 @@
 const cacheName = 'k-58-v1';
 const appShellFiles = [
+    '/keisuke-58.github.io/',
     '/android-chrome-192x192.png',
     '/android-chrome-512x512.png',
     '/apple-touch-icon.png',
@@ -19,3 +20,21 @@ const appShellFiles = [
     '/style.css',
     '/sw.js'
 ];
+
+// install
+self.addEventListener('install', (event) => {
+    event.waitUntil(
+        caches.open(cacheName).then((cache) => {
+            return cache.addAll(appShellFiles);
+        });
+    );
+});
+
+// fetch cache load
+self.addEventListener('fetch', (event) => {
+    event.respondWith(
+        caches.match(event.request).then((response) => {
+            return response ? response : fetch(event.request);
+        });
+    );
+});

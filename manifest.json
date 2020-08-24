@@ -1,0 +1,13 @@
+{
+    "shotName" : "PWA",
+    "name" : "PWA sample app",
+    "display" : "standalone",
+    "startUrl" : "index.html",
+    "icons" : [
+        {
+            "src" : "images/icon.jpg",
+            "sizes" : "192*192",
+            "type" : "image/jpg"
+        }
+    ]
+}
