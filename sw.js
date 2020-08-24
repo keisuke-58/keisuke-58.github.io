@@ -1,21 +1,12 @@
-const cacheName = 'k-58-v1';
-const urlsToCache = [
-    '/keisuke-58.github.io/',
-    '/github.js',
-    '/index.html',
-    '/style.css'
-];
-
 self.addEventListener('install', function(e) {
  e.waitUntil(
-   caches.open(cacheName).then(function(cache) {
+   caches.open('k-58-v1').then(function(cache) {
      return cache.addAll([
-       '/',
        '/index.html',
        '/github.js',
        '/style.css',
        '/android-chrome-192x192.png',
-       '/android-chrome-512x512.png',
+       '/android-chrome-512x512.png'
      ]);
    })
  );
