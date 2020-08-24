@@ -1,31 +1,17 @@
 const cacheName = 'k-58-v1';
-const appShellFiles = [
+const urlsToCache = [
     '/keisuke-58.github.io/',
-    '/android-chrome-192x192.png',
-    '/android-chrome-512x512.png',
-    '/apple-touch-icon.png',
-    '/browserconfig.xml',
-    '/favicon-16x16.png',
-    '/favicon-32x32.png',
-    '/favicon.ico',
     '/github.js',
     '/index.html',
-    '/mstile-144x144.png',
-    '/mstile-150x150.png',
-    '/mstile-310x150.png',
-    '/mstile-310x310.png',
-    '/mstile-70x70.png',
-    '/safari-pinned-tab.svg',
-    '/site.webmanifest',
-    '/style.css',
-    '/sw.js'
+    '/style.css'
 ];
 
 // install
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(cacheName).then((cache) => {
-            return cache.addAll(appShellFiles);
+            console.log('Opened cache');
+            return cache.addAll(urlsToCache);
         })
     );
 });
@@ -34,7 +20,40 @@ self.addEventListener('install', (event) => {
 self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request).then((response) => {
-            return response ? response : fetch(event.request);
+            //return response ? response : fetch(event.request);
+            if(response){
+                return response;   
+            }else{
+                let fetchRequest = event.request.clone();
+                return fetch(fetchRequest).then((response) => {
+                    if(!resopnse || response.status !== 200 || response.type !== 'basic'){
+                        return response;
+                    }
+                    
+                    let responseToCache = response.clone();
+                    caches.open(cacheName).then((cache) => {
+                        cache.put(event.request, resposeToCache);
+                    });
+                    
+                    return response;
+                });
+            }
+        })
+    );
+});
+
+// update service worker
+self.addEventListener('activate', (event) => {
+    let cacheAllowlist = ['pages-cache-v1'];
+    event.waitUntil(
+        caches.keys().then((cacheName) => {
+            return Promise.all(
+                cacheNames.map((cacheName) => {
+                    if(cacheAllowlist.indexOf(cacheName) === -1){
+                        return caches.delete(cacheName);
+                    }
+                })
+            )
         })
     );
 });
