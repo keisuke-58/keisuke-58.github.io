@@ -21,8 +21,8 @@ self.addEventListener('fetch', (e) => {
     console.log(e.request.url);
     e.respondWith(
         caches.match(e.request).then((response) => {
-            //return response || fetch(e.request);
-            if(response){
+            return response || fetch(e.request);
+            /*if(response){
                 return response;   
             }else{
                 let fetchRequest = e.request.clone();
@@ -38,7 +38,7 @@ self.addEventListener('fetch', (e) => {
                     
                     return response;
                 })
-            }
+            }*/
         })
     );
 });
