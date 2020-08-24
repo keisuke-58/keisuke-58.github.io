@@ -6,18 +6,22 @@ const urlsToCache = [
     '/style.css'
 ];
 
+self.addEventListener('fetch', (event) => {
+    //
+});
+
 // install
-self.addEventListener('install', (event) => {
+/*self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(cacheName).then((cache) => {
             console.log('Opened cache');
             return cache.addAll(urlsToCache);
         })
     );
-});
+});*/
 
 // fetch cache load
-self.addEventListener('fetch', (event) => {
+/*self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request).then((response) => {
             //return response ? response : fetch(event.request);
@@ -40,10 +44,10 @@ self.addEventListener('fetch', (event) => {
             }
         })
     );
-});
+});*/
 
 // update service worker
-self.addEventListener('activate', (event) => {
+/*self.addEventListener('activate', (event) => {
     let cacheAllowlist = ['pages-cache-v1'];
     event.waitUntil(
         caches.keys().then((cacheName) => {
@@ -56,4 +60,4 @@ self.addEventListener('activate', (event) => {
             )
         })
     );
-});
+});*/

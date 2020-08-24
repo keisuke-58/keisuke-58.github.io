@@ -1,13 +1,20 @@
 {
-    "shotName" : "PWA",
+    "shot_name" : "PWA",
     "name" : "PWA sample app",
     "display" : "standalone",
-    "startUrl" : "index.html",
+    "start_url" : "index.html",
+    "background_color" : "#FFFFFF",
+    "theme_color" : "#FFFFFF",
     "icons" : [
         {
-            "src" : "images/icon.jpg",
-            "sizes" : "192*192",
-            "type" : "image/jpg"
+            "src" : "android-chrome-192x192.png",
+            "sizes" : "192x192",
+            "type" : "image/png"
+        },
+        {
+            "src" : "android-chrome-512x512.png",
+            "sizes" : "512x512",
+            "type" : "image/png"
         }
     ]
 }
