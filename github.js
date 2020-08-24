@@ -57,7 +57,7 @@ function handleIntersect(entries, observer){
 if('serviceWorker' in navigator){
    window.addEventListener('load', () => {
        navigator.serviceWorker.register('/sw.js').then((registration) => {
-           console.log();
+           console.log(registration.scope);
        }, (error) => {
            console.log(error);
        });
