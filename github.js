@@ -107,9 +107,10 @@ if('geolocation' in navigator){
             '電波状況などで位置情報が取得できませんでした。',
             'タイムアウトしました。'
         ];
-        let date = new Date();
+        console.log(error.code);
+        /*let date = new Date();
         let location = document.querySelector('#geolocation');
-        location.value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() '\n' + 'エラー:' + ERROR_MSG[error.code] + '\n';
+        location.value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() '\n' + 'エラー:' + ERROR_MSG[error.code] + '\n';*/
     }
 }
 
