@@ -96,7 +96,7 @@ if('geolocation' in navigator){
             speed : d.speed
         }
         let location = document.querySelector('#geolocation');
-        location.value += date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() '\n' + '緯度:' + data['latitude'] + ', 経度:' + data['longitude'] + ', 高度:' + data['altitude'] + ', 方角:' + data['heading'] + ', 速度:' + data['speed'] + '\n';
+        location.value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() '\n' + '緯度:' + data['latitude'] + ', 経度:' + data['longitude'] + ', 高度:' + data['altitude'] + ', 方角:' + data['heading'] + ', 速度:' + data['speed'] + '\n';
     }
     
     function errorFunc(error){
@@ -108,7 +108,7 @@ if('geolocation' in navigator){
         ];
         let date = new Date();
         let location = document.querySelector('#geolocation');
-        location.value += date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() '\n' + 'エラー:' + ERROR_MSG[error.code] + '\n';
+        location.value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() '\n' + 'エラー:' + ERROR_MSG[error.code] + '\n';
     }
 }
 
