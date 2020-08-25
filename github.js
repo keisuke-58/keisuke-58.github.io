@@ -54,11 +54,14 @@ function handleIntersect(entries, observer){
 // ----------------------------------
 
 fetch('/ini.json').then((response) => {
+    throw 'test error';
     console.log(response);
     return response.json();
 }).then((json) => {
     console.log(json);
-})
+}).catch((error) => {
+    console.log(error);
+});
 
 // Service Worker
 /*if('serviceWorker' in navigator){
