@@ -53,11 +53,12 @@ function handleIntersect(entries, observer){
 
 // ----------------------------------
 
-fetch('/ini.json').then((response) => {
+const INI_DATA = fetch('/ini.json').then((response) => {
     console.log(response);
     return response.json();
-}).then((json) => {
-    throw 'test error';
+});
+
+INI_DATA.then((json) => {
     console.log(json);
 }).catch((error) => {
     console.log(error);
