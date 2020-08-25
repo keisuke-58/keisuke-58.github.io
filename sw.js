@@ -1,18 +1,15 @@
-const CACHE_NAME = 'k-58-v1';
-const SUCCESSIVE_CACHE = false;
-const URLS_TO_CACHE = [
-    '/index.html',
-    '/github.js',
-    '/style.css',
-    '/android-chrome-192x192.png',
-    '/android-chrome-512x512.png'
-];
+fetch('/ini.json').then((response) => {
+    console.log(response);
+    if(!response || response.status !== 200 || response.type !== 'basic'){ throw 'ini.json error'; }
+    return response.json();
+}).then((json) => {
+    console.log(json);
 
 // install
 self.addEventListener('install', (e) => {
     e.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
-            return cache.addAll(URLS_TO_CACHE);
+        caches.open(json['cacheName']).then((cache) => {
+            return cache.addAll(json['urlsToCache']);
         })
     );
 });
@@ -22,7 +19,7 @@ self.addEventListener('fetch', (e) => {
     console.log(e.request.url);
     e.respondWith(
         caches.match(e.request).then((response) => {
-            if(!SUCCESSIVE_CACHE){
+            if(!json['successiveCache']){
                 return response ? response : fetch(e.request);
             }else{
                 if(response){
@@ -42,7 +39,7 @@ self.addEventListener('fetch', (e) => {
                         // レスポンスの複製（stream）
                         // キャッシュ、ブラウザ用
                         let responseToCache = response.clone();
-                        caches.open(CACHE_NAME).then((cache) => {
+                        caches.open(json['cacheName']).then((cache) => {
                             cache.put(e.request, responseToCache);
                         });
 
@@ -56,12 +53,11 @@ self.addEventListener('fetch', (e) => {
 
 // update service worker
 self.addEventListener('activate', (e) => {
-    let = cacheAllowlist = ['k-58-v2'];
     e.waitUntil(
         caches.keys().then((cacheName) => {
             //return Promise.all(
                 //cacheNames.map((cacheName) => {
-                    //if(cacheAllowlist.indexOf(cacheName) !== -1){
+                    //if(json['cacheAllowlist'].indexOf(cacheName) !== -1){
                         //return caches.delete(cacheName);
                     //}
                 //})
@@ -69,4 +65,9 @@ self.addEventListener('activate', (e) => {
             console.log(cacheName);
         })
     );
+});
+    
+}).catch((error) => {
+    console.log(error);
+    alert('error : ' + error);
 });

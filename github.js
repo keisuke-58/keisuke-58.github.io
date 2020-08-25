@@ -53,21 +53,8 @@ function handleIntersect(entries, observer){
 
 // ----------------------------------
 
-const INI_JSON = fetch('/ini.json').then((response) => {
-    console.log(response);
-    if(response.status === 200){ throw 'error 1'; }
-    return response.json();
-});
-
-INI_JSON.then((json) => {
-    const INI_DATA = json;
-    console.log(INI_DATA);
-}).catch((error) => {
-    console.log(error);
-});
-
 // Service Worker
-/*if('serviceWorker' in navigator){
+if('serviceWorker' in navigator){
    window.addEventListener('load', () => {
        navigator.serviceWorker.register('/sw.js').then((registration) => {
            console.log(registration.scope);
@@ -109,6 +96,6 @@ window.addEventListener('beforeinstallprompt', (event) => {
             deferredPrompt = null;
         });
     });
-});*/
+});
 
 // ----------------------------------
