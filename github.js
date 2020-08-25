@@ -51,6 +51,25 @@ function handleIntersect(entries, observer){
     });
 }
 
+
+
+// ----------------------------------
+
+fetch('/ini.json').then((response) => {
+    console.log(response);
+    if(!response || response.status !== 200 || response.type !== 'basic'){ throw 'ini.json error'; }
+    return response.json();
+}).then((json) => {
+    console.log(json);
+}).catch((error) => {
+    console.log(error);
+    alert('error : ' + error);
+});
+
+importScripts('ini.js').then((response) => {
+    console.log(response);
+})
+
 // ----------------------------------
 
 // Service Worker
