@@ -4,6 +4,7 @@ const URLS_TO_CACHE = [
     '/index.html',
     '/github.js',
     '/style.css',
+    '/ini.js',
     '/android-chrome-192x192.png',
     '/android-chrome-512x512.png'
 ];
