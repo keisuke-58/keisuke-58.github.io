@@ -1,0 +1,11 @@
+{
+    "cacheName" : "k-58-v1",
+    "successiveCache" : false,
+    "urlsToCache" : [
+        "/index.html",
+        "github.js",
+        "style.css",
+        "android-chrome-192x192.png",
+        "android-chrome-512x512.png"
+    ]
+}

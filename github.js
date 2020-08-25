@@ -53,8 +53,13 @@ function handleIntersect(entries, observer){
 
 // ----------------------------------
 
+let json = fetch('/ini.json').then((response) => {
+    return response.json();
+});
+json.then((json) => { console.log(json); })
+
 // Service Worker
-if('serviceWorker' in navigator){
+/*if('serviceWorker' in navigator){
    window.addEventListener('load', () => {
        navigator.serviceWorker.register('/sw.js').then((registration) => {
            console.log(registration.scope);
@@ -96,6 +101,6 @@ window.addEventListener('beforeinstallprompt', (event) => {
             deferredPrompt = null;
         });
     });
-});
+});*/
 
 // ----------------------------------
