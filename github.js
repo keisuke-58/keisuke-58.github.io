@@ -63,7 +63,7 @@ if('geolocation' in navigator){
             let date = new Date();
             let data = {
                 latitude : d.latitude,
-                longgitude : d.longitude,
+                longitude : d.longitude,
                 altitude : d.altitude,
                 accuracy : d.accuracy,
                 altibudeAccuracy : d.altitudeAccuracy,
