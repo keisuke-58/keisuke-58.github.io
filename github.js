@@ -68,7 +68,7 @@ if('geolocation' in navigator){
                 accuracy : d.accuracy,
                 altibudeAccuracy : d.altitudeAccuracy,
                 heading : d.heading,
-                heading : ((heading) => {
+                headingString : ((heading) => {
                     switch(heading){
                         case 0:
                             return 'north';
@@ -92,7 +92,7 @@ if('geolocation' in navigator){
             console.log(data);
             
             let location = document.querySelector('#geolocation');
-            location.value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() '\n' + '緯度:' + data['latitude'] + ', 経度:' + data['longitude'] + ', 高度:' + data['altitude'] + ', 方角:' + data['heading'] + ', 速度:' + data['speed'] + '\n';
+            location.value = '緯度:' + data['latitude'] + ', 経度:' + data['longitude'] + ', 高度:' + data['altitude'] + ', 方角:' + data['heading'] + ', 速度:' + data['speed'] + '\n';
         }, (error) => {
             const ERROR_MSG = [
                 '原因不明のエラーが発生しました。',
@@ -104,7 +104,7 @@ if('geolocation' in navigator){
             
             let date = new Date();
             let location = document.querySelector('#geolocation');
-            location.value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() '\n' + 'エラー:' + ERROR_MSG[error.code] + '\n';
+            location.value = 'エラー:' + ERROR_MSG[error.code] + '\n';
         }, {
             enableHighAccuracy : true,
             timeout : 8000,
