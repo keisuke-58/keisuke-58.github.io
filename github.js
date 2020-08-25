@@ -67,8 +67,8 @@ if('geolocation' in navigator){
                 altitude : d.altitude,
                 accuracy : d.accuracy,
                 altibudeAccuracy : d.altitudeAccuracy,
-                heading : function(){
-                    switch(d.heading){
+                heading : ((heading) => {
+                    switch(heading){
                         case 0:
                             return 'north';
                             break;
@@ -85,7 +85,7 @@ if('geolocation' in navigator){
                             return 'unknown';
                             break;
                     }
-                },
+                })(d.heading),
                 speed : d.speed
             }
             console.log(data);
