@@ -8,3 +8,6 @@ const URLS_TO_CACHE = [
     '/android-chrome-192x192.png',
     '/android-chrome-512x512.png'
 ];
+const CACHE_ALLOWLIST = [
+    'k-58-v2'
+];

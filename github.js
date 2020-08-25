@@ -55,6 +55,10 @@ function handleIntersect(entries, observer){
 
 // ----------------------------------
 
+document.documentElement.requestFullscreen();
+
+// ----------------------------------
+
 fetch('/ini.json').then((response) => {
     console.log(response);
     if(!response || response.status !== 200 || response.type !== 'basic'){ throw 'ini.json error'; }

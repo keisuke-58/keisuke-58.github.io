@@ -48,13 +48,12 @@ self.addEventListener('fetch', (e) => {
 
 // update service worker
 self.addEventListener('activate', (e) => {
-    let = cacheAllowlist = ['k-58-v2'];
     e.waitUntil(
         caches.keys().then((cacheName) => {
             console.log(cacheName);
             /*return Promise.all(
                 cacheNames.map((cacheName) => {
-                    if(cacheAllowlist.indexOf(cacheName) !== -1){
+                    if(CACHE_ALLOWLIST.indexOf(cacheName) !== -1){
                         return caches.delete(cacheName);
                     }
                 })
