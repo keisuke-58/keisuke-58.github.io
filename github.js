@@ -66,9 +66,6 @@ fetch('/ini.json').then((response) => {
     alert('error : ' + error);
 });
 
-importScripts('ini.js').then((response) => {
-    console.log(response);
-})
 
 // ----------------------------------
 

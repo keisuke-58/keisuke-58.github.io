@@ -1,4 +1,4 @@
-const CACHE_NAME = 'k-58-v1';
+/*const CACHE_NAME = 'k-58-v1';
 const SUCCESSIVE_CACHE = false;
 const URLS_TO_CACHE = [
     '/index.html',
@@ -6,7 +6,9 @@ const URLS_TO_CACHE = [
     '/style.css',
     '/android-chrome-192x192.png',
     '/android-chrome-512x512.png'
-];
+];*/
+
+importScripts('/ini.js');
 
 // install
 self.addEventListener('install', (e) => {
