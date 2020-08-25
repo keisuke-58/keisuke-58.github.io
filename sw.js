@@ -1,4 +1,5 @@
 const CACHE_NAME = 'k-58-v1';
+const SUCCESSIVE_CACHE = false;
 const URLS_TO_CACHE = [
     '/index.html',
     '/github.js',
@@ -21,23 +22,26 @@ self.addEventListener('fetch', (e) => {
     console.log(e.request.url);
     e.respondWith(
         caches.match(e.request).then((response) => {
-            return response || fetch(e.request);
-            if(response){
-                return response;   
+            if(!SUCCESSIVE_CACHE){
+                return response ? response : fetch(e.request);
             }else{
-                let fetchRequest = e.request.clone();
-                return fetch(fetchRequest).then((response) => {
-                    if(!response || response.status !== 200 || response.type !== 'basic'){
+                if(response){
+                    return response;   
+                }else{
+                    let fetchRequest = e.request.clone();
+                    return fetch(fetchRequest).then((response) => {
+                        if(!response || response.status !== 200 || response.type !== 'basic'){
+                            return response;
+                        }
+
+                        let responseToCache = response.clone();
+                        caches.open(CACHE_NAME).then((cache) => {
+                            cache.put(e.request, responseToCache);
+                        });
+
                         return response;
-                    }
-                    
-                    let responseToCache = response.clone();
-                    caches.open(CACHE_NAME).then((cache) => {
-                        cache.put(e.request, responseToCache);
-                    });
-                    
-                    return response;
-                })
+                    })
+                }
             }
         })
     );
@@ -50,6 +54,7 @@ self.addEventListener('activate', (e) => {
         caches.keys().then((cacheName) => {
             /*return Promise.all(
                 cacheNames.map((cacheName) => {
+                    if(cacheAllowlist.indexOf(cacheName) !== -1){
                     if(cacheAllowlist.indexOf(cacheName) !== -1){
                         return caches.delete(cacheName);
                     }
