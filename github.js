@@ -58,7 +58,46 @@ function handleIntersect(entries, observer){
 // Geolocation
 if('geolocation' in navigator){
     window.addEventListener('load', () => {
-        navigator.geolocation.getCurrentPosition(successFunc, errorFunc, {
+        navigator.geolocation.getCurrentPosition((position) => {
+            let d = position.coords;
+            let date = new Date();
+            let data = {
+                latitude : d.latitude,
+                longgitude : d.longitude,
+                altitude : d.altitude,
+                accuracy : d.accuracy,
+                altibudeAccuracy : d.altitudeAccuracy,
+                heading : function(){
+                    switch(d.heading){
+                        case 0:
+                            return 'north';
+                            break;
+                        case 90:
+                            return 'east';
+                            break;
+                        case 180:
+                            return 'south';
+                            break;
+                        case 270:
+                            return 'west';
+                            break;
+                        default:
+                            return 'unknown';
+                            break;
+                    }
+                },
+                speed : d.speed
+            }
+            console.log(data);
+        }, (error) => {
+            const ERROR_MSG = [
+                '原因不明のエラーが発生しました。',
+                '位置情報の取得が許可されませんでした。',
+                '電波状況などで位置情報が取得できませんでした。',
+                'タイムアウトしました。'
+            ];
+            console.log(error.code);
+        }, {
             enableHighAccuracy : true,
             timeout : 8000,
             maximumAge : 10000
@@ -66,48 +105,13 @@ if('geolocation' in navigator){
     });
     
     function successFunc(position){
-        let d = position.coords;
-        let date = new Date();
-        let data = {
-            latitude : d.latitude,
-            longgitude : d.longitude,
-            altitude : d.altitude,
-            accuracy : d.accuracy,
-            altibudeAccuracy : d.altitudeAccuracy,
-            heading : function(){
-                switch(d.heading){
-                    case 0:
-                        return 'north';
-                        break;
-                    case 90:
-                        return 'east';
-                        break;
-                    case 180:
-                        return 'south';
-                        break;
-                    case 270:
-                        return 'west';
-                        break;
-                    default:
-                        return 'unknown';
-                        break;
-                }
-            },
-            speed : d.speed
-        }
-        console.log(data);
+        
         /*let location = document.querySelector('#geolocation');
         location.value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() '\n' + '緯度:' + data['latitude'] + ', 経度:' + data['longitude'] + ', 高度:' + data['altitude'] + ', 方角:' + data['heading'] + ', 速度:' + data['speed'] + '\n';*/
     }
     
     function errorFunc(error){
-        const ERROR_MSG = [
-            '原因不明のエラーが発生しました。',
-            '位置情報の取得が許可されませんでした。',
-            '電波状況などで位置情報が取得できませんでした。',
-            'タイムアウトしました。'
-        ];
-        console.log(error.code);
+        
         /*let date = new Date();
         let location = document.querySelector('#geolocation');
         location.value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() '\n' + 'エラー:' + ERROR_MSG[error.code] + '\n';*/
