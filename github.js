@@ -53,10 +53,11 @@ function handleIntersect(entries, observer){
 
 // ----------------------------------
 
-let json = fetch('/ini.json').then((response) => {
+let p = fetch('/ini.json').then((response) => {
+    console.log(response);
     return response.json();
 });
-json.then((json) => { console.log(json); })
+p.then((json) => { console.log(json); })
 
 // Service Worker
 /*if('serviceWorker' in navigator){
