@@ -55,7 +55,7 @@ function handleIntersect(entries, observer){
 
 // ----------------------------------
 
-document.documentElement.requestFullscreen();
+window.documentElement.requestFullscreen();
 
 // ----------------------------------
 
