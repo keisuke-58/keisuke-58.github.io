@@ -67,6 +67,7 @@ if('geolocation' in navigator){
                 altitude : d.altitude,
                 accuracy : d.accuracy,
                 altibudeAccuracy : d.altitudeAccuracy,
+                heading : d.heading,
                 heading : ((heading) => {
                     switch(heading){
                         case 0:
@@ -89,6 +90,9 @@ if('geolocation' in navigator){
                 speed : d.speed
             }
             console.log(data);
+            
+            let location = document.querySelector('#geolocation');
+            location.value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() '\n' + '緯度:' + data['latitude'] + ', 経度:' + data['longitude'] + ', 高度:' + data['altitude'] + ', 方角:' + data['heading'] + ', 速度:' + data['speed'] + '\n';
         }, (error) => {
             const ERROR_MSG = [
                 '原因不明のエラーが発生しました。',
@@ -97,25 +101,16 @@ if('geolocation' in navigator){
                 'タイムアウトしました。'
             ];
             console.log(error.code);
+            
+            let date = new Date();
+            let location = document.querySelector('#geolocation');
+            location.value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() '\n' + 'エラー:' + ERROR_MSG[error.code] + '\n';
         }, {
             enableHighAccuracy : true,
             timeout : 8000,
             maximumAge : 10000
         });    
     });
-    
-    function successFunc(position){
-        
-        /*let location = document.querySelector('#geolocation');
-        location.value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() '\n' + '緯度:' + data['latitude'] + ', 経度:' + data['longitude'] + ', 高度:' + data['altitude'] + ', 方角:' + data['heading'] + ', 速度:' + data['speed'] + '\n';*/
-    }
-    
-    function errorFunc(error){
-        
-        /*let date = new Date();
-        let location = document.querySelector('#geolocation');
-        location.value = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds() '\n' + 'エラー:' + ERROR_MSG[error.code] + '\n';*/
-    }
 }
 
 // ----------------------------------
