@@ -55,6 +55,7 @@ function handleIntersect(entries, observer){
 
 const INI_JSON = fetch('/ini.json').then((response) => {
     console.log(response);
+    if(response.status === 200){ throw 'error 1'; }
     return response.json();
 });
 
