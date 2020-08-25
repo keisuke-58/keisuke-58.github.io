@@ -28,12 +28,19 @@ self.addEventListener('fetch', (e) => {
                 if(response){
                     return response;   
                 }else{
+                    // リクエストを複製
+                    // リクエストはstreamのため１度しか使えないので複製
+                    // １回はキャッシュ、もう１回はフェッチのために使用
                     let fetchRequest = e.request.clone();
                     return fetch(fetchRequest).then((response) => {
+                        // 有効か否か
+                        // basicによりリクエストの送信元と送信先のドメインが同じであることを示す。サードパーティのアセットへのリクエストがキャッシュされないことと同義
                         if(!response || response.status !== 200 || response.type !== 'basic'){
                             return response;
                         }
-
+                        
+                        // レスポンスの複製（stream）
+                        // キャッシュ、ブラウザ用
                         let responseToCache = response.clone();
                         caches.open(CACHE_NAME).then((cache) => {
                             cache.put(e.request, responseToCache);
