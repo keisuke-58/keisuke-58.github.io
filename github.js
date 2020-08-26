@@ -144,7 +144,7 @@ if('serviceWorker' in navigator){
 if(window.matchMedia('(display-mode: fullscreen)').matches){
     document.querySelector('#closeKiosk').addEventListener('click', () => {
         // ○： Windows.chromium, 
-        // ×： iOS, chrome, 
+        // ×： iOS, chrome, mac.chromium
         window.close();
     });
 }

@@ -1,5 +1,5 @@
 const CACHE_NAME = 'k-58-v1';
-const SUCCESSIVE_CACHE = false;
+const SUCCESSIVE_CACHE = true;
 const URLS_TO_CACHE = [
     '/index.html',
     '/github.js',
