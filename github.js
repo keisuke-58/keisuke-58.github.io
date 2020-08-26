@@ -140,6 +140,11 @@ if('serviceWorker' in navigator){
    });
 }
 
+// close kiosk
+document.querySelector('#closeKiosk').addEventListener('click', () => {
+    window.close();
+});
+
 // install button
 let deferredPrompt;
 let addBtn = document.querySelector('#add-button');
