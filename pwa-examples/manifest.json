@@ -17,5 +17,5 @@
     ],
     "name": "PWA example",
     "short_name": "PWA",
-    "start_url": "/index.html"
+    "start_url": "/pwa-examples/index.html"
 }

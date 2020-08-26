@@ -132,7 +132,7 @@ fetch('/ini.json').then((response) => {
 // Service Worker
 if('serviceWorker' in navigator){
    window.addEventListener('load', () => {
-       navigator.serviceWorker.register('/sw.js').then((registration) => {
+       navigator.serviceWorker.register('/pwa-examples/sw.js').then((registration) => {
            console.log(registration.scope);
        }, (error) => {
            console.log(error);

@@ -2,12 +2,12 @@
     "cacheName" : "k-58-v1",
     "successiveCache" : false,
     "urlsToCache" : [
-        "/index.html",
-        "/github.js",
-        "/style.css",
-        "/ini.json",
-        "/android-chrome-192x192.png",
-        "/android-chrome-512x512.png"
+        "/pwa-examples/index.html",
+        "/pwa-examples/github.js",
+        "/pwa-examples/style.css",
+        "/pwa-examples/ini.json",
+        "/pwa-examples/android-chrome-192x192.png",
+        "/pwa-examples/android-chrome-512x512.png"
     ],
     "cacheAllowlist" : [
         "k-58-v2"
