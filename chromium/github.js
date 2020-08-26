@@ -54,7 +54,7 @@ function handleIntersect(entries, observer){
 // ----------------------------------
 
 // Service Worker
-f('serviceWorker' in navigator) {
+if('serviceWorker' in navigator) {
   navigator.serviceWorker
            .register('/chromium/sw.js')
            .then(function() { console.log('Service Worker Registered'); });
