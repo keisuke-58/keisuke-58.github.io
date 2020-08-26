@@ -129,8 +129,6 @@ fetch('/ini.json').then((response) => {
 
 // ----------------------------------
 
-document.querySelector('#fullScreen').webkitRequestFullScreen();
-
 // Service Worker
 if('serviceWorker' in navigator){
    window.addEventListener('load', () => {
