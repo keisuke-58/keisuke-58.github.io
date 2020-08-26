@@ -145,6 +145,7 @@ if(window.matchMedia('(display-mode: fullscreen)').matches){
     document.querySelector('#closeKiosk').addEventListener('click', () => {
         // ○： Windows.chromium, 
         // ×： iOS, chrome, mac.chromium
+        console.log('window close');
         window.close();
     });
 }
