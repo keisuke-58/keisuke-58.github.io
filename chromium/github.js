@@ -115,7 +115,7 @@ if('geolocation' in navigator){
 
 // ----------------------------------
 
-fetch('/chromium/ini.json').then((response) => {
+fetch('ini.json').then((response) => {
     console.log(response);
     if(!response || response.status !== 200 || response.type !== 'basic'){ throw 'ini.json error'; }
     return response.json();
@@ -132,7 +132,7 @@ fetch('/chromium/ini.json').then((response) => {
 // Service Worker
 if('serviceWorker' in navigator){
    window.addEventListener('load', () => {
-       navigator.serviceWorker.register('/chromium/sw.js').then((registration) => {
+       navigator.serviceWorker.register('sw.js').then((registration) => {
            console.log(registration.scope);
        }, (error) => {
            console.log(error);
