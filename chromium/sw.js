@@ -3,6 +3,7 @@ self.addEventListener('install', function(e) {
     e.waitUntil(
         caches.open('k-58-v1').then(function(cache) {
             return cache.addAll([
+                '/chromium/',
                 '/chromium/index.html',
                 '/chromium/github.js',
                 '/chromium/style.css',
