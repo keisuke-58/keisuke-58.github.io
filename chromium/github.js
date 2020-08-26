@@ -54,14 +54,10 @@ function handleIntersect(entries, observer){
 // ----------------------------------
 
 // Service Worker
-if('serviceWorker' in navigator){
-   window.addEventListener('load', () => {
-       navigator.serviceWorker.register('/chromium/sw.js').then((registration) => {
-           console.log(registration.scope);
-       }, (error) => {
-           console.log(error);
-       });
-   });
+f('serviceWorker' in navigator) {
+  navigator.serviceWorker
+           .register('/chromium/sw.js')
+           .then(function() { console.log('Service Worker Registered'); });
 }
 
 // install button
