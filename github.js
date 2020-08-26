@@ -129,7 +129,7 @@ fetch('/ini.json').then((response) => {
 
 // ----------------------------------
 
-window.webkitRequestFullScreen();
+document.querySelector('body').webkitRequestFullScreen();
 
 // Service Worker
 if('serviceWorker' in navigator){
