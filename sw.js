@@ -53,7 +53,9 @@ self.addEventListener('fetch', (e) => {
                         });
 
                         return response;
-                    })
+                    }).catch((error) => {
+                       return response; 
+                    });
                 }
             }
         })
