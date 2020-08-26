@@ -3,12 +3,12 @@ self.addEventListener('install', function(e) {
     e.waitUntil(
         caches.open('k-58-v1').then(function(cache) {
             return cache.addAll([
-                '/chromium/index.html',
-                '/chromium/github.js',
-                '/chromium/style.css',
-                '/chromium/ini.js',
-                '/chromium/android-chrome-192x192.png',
-                '/chromium/android-chrome-512x512.png'
+                '/index.html',
+                '/github.js',
+                '/style.css',
+                '/ini.js',
+                '/android-chrome-192x192.png',
+                '/android-chrome-512x512.png'
             ]);
         })
     );
