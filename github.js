@@ -141,9 +141,11 @@ if('serviceWorker' in navigator){
 }
 
 // close kiosk
-document.querySelector('#closeKiosk').addEventListener('click', () => {
-    window.close();
-});
+if(window.matchMedia('(display-mode: fullscreen)').matches){
+    document.querySelector('#closeKiosk').addEventListener('click', () => {
+        window.close();
+    });
+}
 
 // install button
 let deferredPrompt;
