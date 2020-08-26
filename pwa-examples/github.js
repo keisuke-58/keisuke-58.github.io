@@ -144,9 +144,8 @@ if('serviceWorker' in navigator){
 if(window.matchMedia('(display-mode: fullscreen)').matches){
     document.querySelector('#closeKiosk').style.display = 'block';
     document.querySelector('#closeKiosk').addEventListener('click', () => {
-        // ○： Windows.chromium, 
+        // ○： Windows.chromium(「条件：「リンク先」の最後に--kioskを追記する。chromiumは起動しない ), 
         // ×： iOS, chrome, mac.chromium
-        console.log('window close');
         window.close();
     });
 }
