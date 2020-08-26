@@ -115,7 +115,7 @@ if('geolocation' in navigator){
 
 // ----------------------------------
 
-fetch('/ini.json').then((response) => {
+fetch('/pwa-examples/ini.json').then((response) => {
     console.log(response);
     if(!response || response.status !== 200 || response.type !== 'basic'){ throw 'ini.json error'; }
     return response.json();
@@ -129,6 +129,18 @@ fetch('/ini.json').then((response) => {
 
 // ----------------------------------
 
+// close kiosk
+if(window.matchMedia('(display-mode: fullscreen)').matches){
+    document.querySelector('#closeKiosk').style.display = 'block';
+    document.querySelector('#closeKiosk').addEventListener('click', () => {
+        // ○： Windows.chromium(「条件：「リンク先」の最後に--kioskを追記する。chromiumは起動しない ), 
+        // ×： iOS, chrome, mac.chromium
+        window.close();
+    });
+}
+
+// ----------------------------------
+
 // Service Worker
 if('serviceWorker' in navigator){
    window.addEventListener('load', () => {
@@ -138,16 +150,6 @@ if('serviceWorker' in navigator){
            console.log(error);
        });
    });
-}
-
-// close kiosk
-if(window.matchMedia('(display-mode: fullscreen)').matches){
-    document.querySelector('#closeKiosk').style.display = 'block';
-    document.querySelector('#closeKiosk').addEventListener('click', () => {
-        // ○： Windows.chromium(「条件：「リンク先」の最後に--kioskを追記する。chromiumは起動しない ), 
-        // ×： iOS, chrome, mac.chromium
-        window.close();
-    });
 }
 
 // install button
