@@ -142,6 +142,7 @@ if('serviceWorker' in navigator){
 
 // close kiosk
 if(window.matchMedia('(display-mode: fullscreen)').matches){
+    document.querySelector('#closeKiosk').style.display = 'block';
     document.querySelector('#closeKiosk').addEventListener('click', () => {
         // ○： Windows.chromium, 
         // ×： iOS, chrome, mac.chromium
