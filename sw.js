@@ -1,5 +1,5 @@
-//importScripts('/ini.js');
-const CACHE_NAME = 'k-58-v1';
+importScripts('/ini.js');
+/*const CACHE_NAME = 'k-58-v1';
 const SUCCESSIVE_CACHE = true;
 const URLS_TO_CACHE = [
     '/index.html',
@@ -11,7 +11,7 @@ const URLS_TO_CACHE = [
 ];
 const CACHE_ALLOWLIST = [
     'k-58-v2'
-];
+];*/
 
 
 // install
