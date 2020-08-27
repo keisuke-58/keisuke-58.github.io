@@ -14,13 +14,13 @@ fetch('/digital-signage/image.json').then((response) => {
     
     let mySwiper = new Swiper('.swiper-container', {
         // Optional parameters
-        direction : () => {
+        direction : (function(){
             if(window.screen.width > window.screen.height){
                 return 'horizontal';
             }else{
                 return 'vertical';
             }
-        },
+        }),
         loop : true, 
         speed : 10000,
         autoHeight : true,
