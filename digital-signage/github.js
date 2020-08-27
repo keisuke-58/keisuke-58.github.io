@@ -12,7 +12,8 @@ fetch('/digital-signage/image.json').then((response) => {
     let promise = new Promise(() => {
         let html = '<div class="swiper-container"><div class="swiper-wrapper"><div class="swiper-slide"><img src="degital-signage-sample.jpg"></div><div class="swiper-slide"><img src="degital-signage-sample.jpg"></div></div></div>';
         document.querySelector('#slider').insertAdjacentHTML('afterbegin', html);
-    }).then(() => {
+    });
+    promise.then(() => {
     let mySwiper = new Swiper('.swiper-container', {
         // Optional parameters
         //direction : (function(){
