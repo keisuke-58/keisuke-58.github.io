@@ -25,7 +25,11 @@ fetch('/digital-signage/image.json').then((response) => {
         direction : 'horizontal',
         loop : true, 
         speed : 10000,
-        effect : 'slide'
+        effect : 'slide',
+        
+        autoplay: {
+            delay: 10000,
+        },
     });
     });
 }).catch((error) => {
