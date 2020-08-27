@@ -1,18 +1,18 @@
 {
     "slideImage" : {
         "landscape" : [
-            "/digital-signage/degital-signage-sample.jpg",
-            "/digital-signage/degital-signage-sample.jpg",
-            "/digital-signage/degital-signage-sample.jpg",
-            "/digital-signage/degital-signage-sample.jpg",
-            "/digital-signage/degital-signage-sample.jpg"
+            "/digital-signage/digital-signage-sample.jpg",
+            "/digital-signage/digital-signage-sample.jpg",
+            "/digital-signage/digital-signage-sample.jpg",
+            "/digital-signage/digital-signage-sample.jpg",
+            "/digital-signage/digital-signage-sample.jpg"
         ],
         "portrait" : [
-            "/digital-signage/degital-signage-sample-2.jpg",
-            "/digital-signage/degital-signage-sample-2.jpg",
-            "/digital-signage/degital-signage-sample-2.jpg",
-            "/digital-signage/degital-signage-sample-2.jpg",
-            "/digital-signage/degital-signage-sample-2.jpg"
+            "/digital-signage/digital-signage-sample-2.jpg",
+            "/digital-signage/digital-signage-sample-2.jpg",
+            "/digital-signage/digital-signage-sample-2.jpg",
+            "/digital-signage/digital-signage-sample-2.jpg",
+            "/digital-signage/digital-signage-sample-2.jpg"
         ]
     },
     "swiperOptions" : {

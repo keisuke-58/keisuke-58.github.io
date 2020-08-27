@@ -7,8 +7,8 @@ const URLS_TO_CACHE = [
     '/digital-signage/ini.js',
     '/digital-signage/android-chrome-192x192.png',
     '/digital-signage/android-chrome-512x512.png',
-    '/digital-signage/degital-signage-sample.jpg',
-    '/digital-signage/degital-signage-sample-2.jpg'
+    '/digital-signage/digital-signage-sample.jpg',
+    '/digital-signage/digital-signage-sample-2.jpg'
 ];
 const CACHE_ALLOWLIST = [
     'k-58-digital-signage-v2'
