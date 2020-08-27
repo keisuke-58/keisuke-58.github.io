@@ -8,13 +8,13 @@ fetch('/digital-signage/image.json').then((response) => {
     return response.json();
 }).then((json) => {
     console.log(json);
-    let html = '<div class="swiper-container"><div class="swiper-wrapper">';
+    let html = '<div class="swiper-container"><div class="swiper-wrapper" style="height:' + window.screen.height + 'px;">';
     if(window.screen.width < window.screen.height){
         json['swiperOptions']['direction'] = 'vertical';
     }
     let target = (json['swiperOptions']['direction'] === 'horizontal' ? 'landscape' : 'portrait');
     for(var i=0; i<json['slideImage'][target].length; i++){
-        html += '<div class="swiper-slide"><img src="' + json['slideImage'][target][i] + '" style="height:' + window.screen.height + 'px;"></div>';
+        html += '<div class="swiper-slide"><img src="' + json['slideImage'][target][i] + '"></div>';
     }
     html += '</div></div>';
     document.querySelector('#slider').insertAdjacentHTML('afterbegin', html);
