@@ -15,24 +15,7 @@ fetch('/digital-signage/image.json').then((response) => {
     });
     promise.then(() => {
         console.log('promise');
-    let mySwiper = new Swiper('.swiper-container', {
-        // Optional parameters
-        //direction : (function(){
-            //if(window.screen.width > window.screen.height){
-                //return 'horizontal';
-            //}else{
-                //return 'vertical';
-            //}
-        //}),
-        direction : 'horizontal',
-        loop : true, 
-        speed : 10000,
-        effect : 'slide',
-        
-        autoplay: {
-            delay: 10000,
-        },
-    });
+        let mySwiper = new Swiper('.swiper-container', json['swiperOptions']);
     });
 }).catch((error) => {
     console.log(error);

@@ -15,5 +15,13 @@
             "/digital-signage/degital-signage-sample-2.jpg"
         ]
     },
-    "slideInterval" : 10000
+    "swiperOptions" : {
+        "direction" : "",
+        "loop" : true,
+        "speed" : 10000,
+        "effect" : "slide",
+        "autoplay" : {
+            "delay" : 10000
+        }
+    }
 }
