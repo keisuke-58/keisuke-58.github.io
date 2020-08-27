@@ -9,10 +9,10 @@ function digitalSignage(){
     return response.json();
 }).then((json) => {
     console.log(json);
-    let html = '<div class="swiper-container"><div class="swiper-wrapper" style="height:' + window.screen.height + 'px;">';
     if(window.screen.width < window.screen.height){
         json['swiperOptions']['direction'] = 'vertical';
     }
+    let html = '<div class="swiper-container"><div class="swiper-wrapper" style="height:' + (json['swiperOptions']['direction'] === 'horizontal' ? window.screen.height : window.screen.width) + 'px;">';
     let target = (json['swiperOptions']['direction'] === 'horizontal' ? 'landscape' : 'portrait');
     for(var i=0; i<json['slideImage'][target].length; i++){
         html += '<div class="swiper-slide"><img src="' + json['slideImage'][target][i] + '"></div>';
@@ -29,7 +29,7 @@ window.addEventListener('load', () => {
     alert('width:' + window.screen.width + ', height:' + window.screen.height);
     digitalSignage();
 });
-window.addEventListener('orientationchange', () => {
+window.addEventListener('orientationchange resize', () => {
     alert('width:' + window.screen.width + ', height:' + window.screen.height);
     document.querySelector('#slider').textContent = null;
     digitalSignage();
