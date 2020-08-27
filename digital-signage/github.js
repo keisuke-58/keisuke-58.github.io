@@ -17,7 +17,7 @@ fetch('/digital-signage/image.json').then((response) => {
         html += '<div class="swiper-slide"><img src="' + json['slideImage'][target][i] + '"></div>';
     }*/
     for(var i=0; i<json['slideImage'][target].length; i++){
-        html += '<div class="swiper-slide"><iframe src="https://keisuke-58.github.io/digital-signage' + json['slideImage'][target][i] + '"></div>';
+        html += '<div class="swiper-slide"><iframe src="https://keisuke-58.github.io/digital-signage' + json['slideImage'][target][i] + '" frameborder="0"></div>';
     }
     html += '</div></div>';
     document.querySelector('#slider').insertAdjacentHTML('afterbegin', html);
