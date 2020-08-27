@@ -2,7 +2,8 @@
 
 // ----------------------------------
 
-fetch('/digital-signage/image.json').then((response) => {
+function digitalSignage(){
+    fetch('/digital-signage/image.json').then((response) => {
     console.log(response);
     if(!response || response.status !== 200 || response.type !== 'basic'){ throw 'ini.json error'; }
     return response.json();
@@ -22,6 +23,14 @@ fetch('/digital-signage/image.json').then((response) => {
 }).catch((error) => {
     console.log(error);
     alert('error : ' + error);
+});
+}
+window.addEventListener('load', () => {
+    digitalSignage();
+});
+window.addEventListener('orientationchange', () => {
+    document.querySelector('#slider').textContent = null;
+    digitalSignage();
 });
 
 // ----------------------------------
