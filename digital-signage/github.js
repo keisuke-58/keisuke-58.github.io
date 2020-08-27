@@ -2,7 +2,7 @@
 
 // ----------------------------------
 
-fetch('/digital-signage/ini.json').then((response) => {
+fetch('/digital-signage/image.json').then((response) => {
     console.log(response);
     if(!response || response.status !== 200 || response.type !== 'basic'){ throw 'ini.json error'; }
     return response.json();
