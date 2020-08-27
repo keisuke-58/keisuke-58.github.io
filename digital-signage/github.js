@@ -13,8 +13,11 @@ fetch('/digital-signage/image.json').then((response) => {
         json['swiperOptions']['direction'] = 'vertical';
     }
     let target = (json['swiperOptions']['direction'] === 'horizontal' ? 'landscape' : 'portrait');
-    for(var i=0; i<json['slideImage'][target].length; i++){
+    /*for(var i=0; i<json['slideImage'][target].length; i++){
         html += '<div class="swiper-slide"><img src="' + json['slideImage'][target][i] + '"></div>';
+    }*/
+    for(var i=0; i<json['slideImage'][target].length; i++){
+        html += '<div class="swiper-slide"><iframe src="https://keisuke-58.github.io/digital-signage' + json['slideImage'][target][i] + '"></div>';
     }
     html += '</div></div>';
     document.querySelector('#slider').insertAdjacentHTML('afterbegin', html);
