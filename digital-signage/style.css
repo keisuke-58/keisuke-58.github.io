@@ -12,6 +12,9 @@ body{
     left: 1rem;
     z-index: 1000;
 }
+iframe{
+    overflow: hidden;
+}
 @media (orientation: landscape){
     img, iframe{
         width: 100%;
