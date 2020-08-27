@@ -28,7 +28,7 @@ function digitalSignage(screenHeight){
 window.addEventListener('load', () => {
     digitalSignage((window.screen.width < window.screen.height ? window.screen.height : window.screen.width));
 });
-window.addEventListener('orientationchange resize', () => {
+window.addEventListener('orientationchange', () => {
     document.querySelector('#slider').textContent = null;
     digitalSignage((window.screen.width < window.screen.height ? window.screen.height : window.screen.width));
 });
