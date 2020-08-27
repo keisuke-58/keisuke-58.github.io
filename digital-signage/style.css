@@ -6,15 +6,11 @@ body{
     position: relative;
     overflow: hidden;
 }
-#addButton, #reload{
+#addButton{
     position: absolute;
     top: 1rem;
     left: 1rem;
     z-index: 1000;
-}
-#reload{
-    left: 0;
-    right: 1rem;
 }
 @media (orientation: landscape){
     img{

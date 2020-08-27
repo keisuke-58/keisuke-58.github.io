@@ -19,13 +19,14 @@ fetch('/digital-signage/image.json').then((response) => {
     html += '</div></div>';
     document.querySelector('#slider').insertAdjacentHTML('afterbegin', html);
     let mySwiper = new Swiper('.swiper-container', json['swiperOptions']);
+    document.querySelectorAll('.swiper-slide').forEach((element) => {
+        element.addEventListener('click', () => {
+            location.reload();
+        });
+    });
 }).catch((error) => {
     console.log(error);
     alert('error : ' + error);
-});
-
-document.querySelector('#reload').addEventListener('click', () => {
-    location.reload();
 });
 
 // ----------------------------------
