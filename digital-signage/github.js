@@ -28,7 +28,8 @@ function digitalSignage(){
 window.addEventListener('load', () => {
     digitalSignage();
 });
-window.addEventListener('orientationchange resize', () => {
+window.addEventListener('orientationchange', () => {
+    console.log('orientationchange');
     document.querySelector('#slider').textContent = null;
     digitalSignage();
 });
