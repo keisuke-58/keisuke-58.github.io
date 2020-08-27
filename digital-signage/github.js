@@ -2,17 +2,17 @@
 
 // ----------------------------------
 
-function digitalSignage(){
+function digitalSignage(screenHeight){
     fetch('/digital-signage/image.json').then((response) => {
     console.log(response);
     if(!response || response.status !== 200 || response.type !== 'basic'){ throw 'ini.json error'; }
     return response.json();
 }).then((json) => {
     console.log(json);
+    let html = '<div class="swiper-container"><div class="swiper-wrapper" style="height:' + screenHeight + 'px;">';
     if(window.screen.width < window.screen.height){
         json['swiperOptions']['direction'] = 'vertical';
     }
-    let html = '<div class="swiper-container"><div class="swiper-wrapper" style="height:' + (json['swiperOptions']['direction'] === 'horizontal' ? window.screen.height : window.screen.width) + 'px;">';
     let target = (json['swiperOptions']['direction'] === 'horizontal' ? 'landscape' : 'portrait');
     for(var i=0; i<json['slideImage'][target].length; i++){
         html += '<div class="swiper-slide"><img src="' + json['slideImage'][target][i] + '"></div>';
@@ -26,13 +26,11 @@ function digitalSignage(){
 });
 }
 window.addEventListener('load', () => {
-    alert('width:' + window.screen.width + ', height:' + window.screen.height);
-    digitalSignage();
+    digitalSignage((window.screen.width < window.screen.height ? window.screen.height : window.screen.width));
 });
 window.addEventListener('orientationchange resize', () => {
-    alert('width:' + window.screen.width + ', height:' + window.screen.height);
     document.querySelector('#slider').textContent = null;
-    digitalSignage();
+    digitalSignage((window.screen.width < window.screen.height ? window.screen.height : window.screen.width));
 });
 
 // ----------------------------------
