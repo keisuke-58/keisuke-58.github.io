@@ -8,12 +8,11 @@ fetch('/digital-signage/image.json').then((response) => {
     return response.json();
 }).then((json) => {
     console.log(json);
-    let html = '<div class="swiper-container"><div class="swiper-wrapper"><div class="swiper-slide"><img src="degital-signage-sample.jpg"></div><div class="swiper-slide"><img src="degital-signage-sample.jpg"></div></div></div>';
     
-    document.querySelector('#slider').insertAdjacentHTML('beforebegin', html).then(() => {
-        console.log('insertAdjacentHTML');
-    });
-    
+    let promise = new Promise(() => {
+        let html = '<div class="swiper-container"><div class="swiper-wrapper"><div class="swiper-slide"><img src="degital-signage-sample.jpg"></div><div class="swiper-slide"><img src="degital-signage-sample.jpg"></div></div></div>';
+        document.querySelector('#slider').insertAdjacentHTML('beforebegin', html);
+    }).then(() => {
     let mySwiper = new Swiper('.swiper-container', {
         // Optional parameters
         direction : (function(){
@@ -27,6 +26,11 @@ fetch('/digital-signage/image.json').then((response) => {
         speed : 10000,
         effect : 'slide'
     });
+    })
+    
+    
+    
+    
 }).catch((error) => {
     console.log(error);
     alert('error : ' + error);
