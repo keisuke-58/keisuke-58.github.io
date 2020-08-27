@@ -29,9 +29,9 @@ window.addEventListener('load', () => {
     digitalSignage();
 });
 window.addEventListener('orientationchange', () => {
-    console.log('orientationchange');
-    document.querySelector('#slider').textContent = null;
-    digitalSignage();
+    alert('orientationchange');
+    //document.querySelector('#slider').textContent = null;
+    //digitalSignage();
 });
 
 // ----------------------------------
