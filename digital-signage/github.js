@@ -2,14 +2,13 @@
 
 // ----------------------------------
 
-function digitalSignage(screenHeight){
-    fetch('/digital-signage/image.json').then((response) => {
+fetch('/digital-signage/image.json').then((response) => {
     console.log(response);
     if(!response || response.status !== 200 || response.type !== 'basic'){ throw 'ini.json error'; }
     return response.json();
 }).then((json) => {
     console.log(json);
-    let html = '<div class="swiper-container"><div class="swiper-wrapper" style="height:' + screenHeight + 'px;">';
+    let html = '<div class="swiper-container"><div class="swiper-wrapper" style="height:' + (window.screen.width < window.screen.height ? window.screen.height : window.screen.width) + 'px;">';
     if(window.screen.width < window.screen.height){
         json['swiperOptions']['direction'] = 'vertical';
     }
@@ -24,11 +23,8 @@ function digitalSignage(screenHeight){
     console.log(error);
     alert('error : ' + error);
 });
-}
-window.addEventListener('load', () => {
-    digitalSignage((window.screen.width < window.screen.height ? window.screen.height : window.screen.width));
-});
-window.addEventListener('orientationchange resize', () => {
+
+document.querySelector('#reload').addEventListener('click', () => {
     location.reload();
 });
 
