@@ -8,15 +8,10 @@ fetch('/digital-signage/image.json').then((response) => {
     return response.json();
 }).then((json) => {
     console.log(json);
-    
-    let promise = new Promise(() => {
-        let html = '<div class="swiper-container"><div class="swiper-wrapper"><div class="swiper-slide"><img src="degital-signage-sample.jpg"></div><div class="swiper-slide"><img src="degital-signage-sample.jpg"></div></div></div>';
-        document.querySelector('#slider').insertAdjacentHTML('afterbegin', html);
+    let html = '<div class="swiper-container"><div class="swiper-wrapper"><div class="swiper-slide"><img src="degital-signage-sample.jpg"></div><div class="swiper-slide"><img src="degital-signage-sample.jpg"></div></div></div>';
+    document.querySelector('#slider').insertAdjacentHTML('afterbegin', html);
     });
-    promise.then(() => {
-        console.log('promise');
-        let mySwiper = new Swiper('.swiper-container', json['swiperOptions']);
-    });
+    let mySwiper = new Swiper('.swiper-container', json['swiperOptions']);
 }).catch((error) => {
     console.log(error);
     alert('error : ' + error);

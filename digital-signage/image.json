@@ -16,7 +16,7 @@
         ]
     },
     "swiperOptions" : {
-        "direction" : "",
+        "direction" : "horizontal",
         "loop" : true,
         "speed" : 10000,
         "effect" : "slide",
