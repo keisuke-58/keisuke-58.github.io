@@ -8,7 +8,15 @@ fetch('/digital-signage/image.json').then((response) => {
     return response.json();
 }).then((json) => {
     console.log(json);
-    let html = '<div class="swiper-container"><div class="swiper-wrapper"><div class="swiper-slide"><img src="degital-signage-sample.jpg"></div><div class="swiper-slide"><img src="degital-signage-sample.jpg"></div></div></div>';
+    let html = '<div class="swiper-container"><div class="swiper-wrapper">';
+    if(window.screen.width < window.screen.height){
+        json['swiperOptions']['direction'] = 'vertical';
+    }
+    let target = (json['swiperOptions']['direction'] === 'horizontal' ? 'landscape' : 'portrait');
+    for(var i=0; i<json['slideImage'][target].length; i++){
+        html += '<div class="swiper-slide"><img src="' + json['slideImage'][target][i] + '"></div>';
+    }
+    html += '</div></div>';
     document.querySelector('#slider').insertAdjacentHTML('afterbegin', html);
     let mySwiper = new Swiper('.swiper-container', json['swiperOptions']);
 }).catch((error) => {
