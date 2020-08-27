@@ -10,7 +10,6 @@ fetch('/digital-signage/image.json').then((response) => {
     console.log(json);
     let html = '<div class="swiper-container"><div class="swiper-wrapper"><div class="swiper-slide"><img src="degital-signage-sample.jpg"></div><div class="swiper-slide"><img src="degital-signage-sample.jpg"></div></div></div>';
     document.querySelector('#slider').insertAdjacentHTML('afterbegin', html);
-    });
     let mySwiper = new Swiper('.swiper-container', json['swiperOptions']);
 }).catch((error) => {
     console.log(error);
