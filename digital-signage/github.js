@@ -8,7 +8,7 @@ fetch('/digital-signage/image.json').then((response) => {
     return response.json();
 }).then((json) => {
     console.log(json);
-    let html = '<div class="swiper-container"><div class="swiper-wrapper"  style="height:100vh;">';
+    let html = '<div class="swiper-container"><div class="swiper-wrapper"  style="width:' + window.screen.width + 'px;height:100vh;">';
     if(window.screen.width < window.screen.height){
         json['swiperOptions']['direction'] = 'vertical';
     }
