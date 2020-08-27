@@ -8,7 +8,7 @@ fetch('/digital-signage/image.json').then((response) => {
     return response.json();
 }).then((json) => {
     console.log(json);
-    let html = '<div class="swiper-container"><div class="swiper-wrapper" style="height:' + (window.screen.width < window.screen.height ? window.screen.height : window.screen.width) + 'px;">';
+    let html = '<div class="swiper-container"><div class="swiper-wrapper" style="height:' + window.screen.height + 'px;">';
     if(window.screen.width < window.screen.height){
         json['swiperOptions']['direction'] = 'vertical';
     }
@@ -19,11 +19,6 @@ fetch('/digital-signage/image.json').then((response) => {
     html += '</div></div>';
     document.querySelector('#slider').insertAdjacentHTML('afterbegin', html);
     let mySwiper = new Swiper('.swiper-container', json['swiperOptions']);
-    document.querySelectorAll('.swiper-slide').forEach((element) => {
-        element.addEventListener('click', () => {
-            location.reload();
-        });
-    });
 }).catch((error) => {
     console.log(error);
     alert('error : ' + error);
