@@ -14,7 +14,7 @@ fetch('/digital-signage/image.json').then((response) => {
     }
     let target = (json['swiperOptions']['direction'] === 'horizontal' ? 'landscape' : 'portrait');
     for(var i=0; i<json['slideImage'][target].length; i++){
-        html += '<div class="swiper-slide"><img src="' + json['slideImage'][target][i] + '"></div>';
+        html += '<div class="swiper-slide"><img src="' + json['slideImage'][target][i] + '" style="height:100vh;"></div>';
     }
     html += '</div></div>';
     document.querySelector('#slider').insertAdjacentHTML('afterbegin', html);

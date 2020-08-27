@@ -21,6 +21,5 @@ body{
 @media (orientation: portrait){
     img{
         width: 100%;
-        max-height: 200%;
     }
 }
