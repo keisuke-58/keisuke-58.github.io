@@ -13,13 +13,13 @@ body{
     z-index: 1000;
 }
 @media (orientation: landscape){
-    img{
+    img, iframe{
         width: 100%;
         height: 100vh;
     }
 }
 @media (orientation: portrait){
-    img{
+    img, iframe{
         width: 100%;
     }
 }
