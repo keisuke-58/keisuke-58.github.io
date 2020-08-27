@@ -26,12 +26,13 @@ function digitalSignage(){
 });
 }
 window.addEventListener('load', () => {
+    alert('width:' + window.screen.width + ', height:' + window.screen.height);
     digitalSignage();
 });
 window.addEventListener('orientationchange', () => {
-    alert('orientationchange');
-    //document.querySelector('#slider').textContent = null;
-    //digitalSignage();
+    alert('width:' + window.screen.width + ', height:' + window.screen.height);
+    document.querySelector('#slider').textContent = null;
+    digitalSignage();
 });
 
 // ----------------------------------
