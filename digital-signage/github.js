@@ -13,7 +13,14 @@ fetch('/digital-signage/image.json').then((response) => {
     document.querySelector('#slider').insertAdjacentHTML('beforebegin', html);
     
     let mySwiper = new Swiper('.swiper-container', {
-        direction : 'horizontal',
+        // Optional parameters
+        direction : () => {
+            if(window.screen.width > window.screen.height){
+                return 'horizontal';
+            }else{
+                return 'vertical';
+            }
+        },
         loop : true, 
         speed : 10000,
         autoHeight : true,
@@ -21,7 +28,23 @@ fetch('/digital-signage/image.json').then((response) => {
         spaceBetween : 0,
         slidePerView : 1,
         slidePerGroup : 1,
-        centeredSlides : false
+        centeredSlides : false,
+
+        // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+        },
+
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        // And if we need scrollbar
+        scrollbar: {
+            el: '.swiper-scrollbar',
+        },
     });
 }).catch((error) => {
     console.log(error);
