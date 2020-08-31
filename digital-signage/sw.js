@@ -51,7 +51,7 @@ self.addEventListener('fetch', (e) => {
 // update service worker
 self.addEventListener('activate', (e) => {
     e.waitUntil(
-        caches.keys().then((cacheName) => {
+        /*caches.keys().then((cacheName) => {
             console.log(cacheName);
             return Promise.all(
                 cacheNames.map((cacheName) => {
@@ -60,13 +60,13 @@ self.addEventListener('activate', (e) => {
                     }
                 })
             );
-        })
-        /*caches.keys().then(keys => Promise.all(
+        })*/
+        caches.keys().then(keys => Promise.all(
             keys.map(key => {
                 if(!expectedCaches.includes(key)){
                     return caches.delete(key);
                 }
             })
-        ))*/
+        ))
     );
 });
