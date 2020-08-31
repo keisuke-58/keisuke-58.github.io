@@ -11,6 +11,17 @@ self.addEventListener('install', (e) => {
 
 self.addEventListener('activate', (e) => {
     console.log('cache v1');
+    e.waitUntil(
+        caches.keys().then(keys => Promise.all(
+            keys.map(key => {
+                if(!expectedCaches.includes(key)){
+                    return caches.delete(key);
+                }
+            })
+        )).then(() => {
+            console.log('cache v2');
+        })
+    );
 });
 
 self.addEventListener('fetch', (e) => {
