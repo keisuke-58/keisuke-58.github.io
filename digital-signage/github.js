@@ -79,6 +79,7 @@ window.addEventListener('beforeinstallprompt', (event) => {
 
 // PWA script
 console.log(window.matchMedia('(display-mode: standalone)').matches);
+console.log(window.navigator.standalone);
 if(window.matchMedia('(display-mode: standalone)').matches){
     // action navigator
     window.addEventListener('load', () => {
