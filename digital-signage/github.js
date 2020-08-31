@@ -26,7 +26,7 @@ fetch('/digital-signage/image.json').then((response) => {
     console.log(error);
     alert('error : ' + error);
 });
-
+console.log(window.navigator.userAgent);
 // action navigator
 window.addEventListener('DOMContentLoaded', () => {
     const ua = window.navigator.userAgent.toLowerCase();
