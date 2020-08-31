@@ -8,7 +8,7 @@ self.addEventListener('install', e => {
     // V1
     console.log('V1 install');
     e.waitUntil(
-        caches.open(CACHE_NAME).then(cache => cache.add('/digital-signage-sample.jpg'))
+        caches.open(CACHE_NAME).then(cache => cache.add('/pwa-cache/digital-signage-sample.jpg'))
     );
     
     // V2
