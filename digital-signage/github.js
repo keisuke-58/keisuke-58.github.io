@@ -26,9 +26,9 @@ fetch('/digital-signage/image.json').then((response) => {
     console.log(error);
     alert('error : ' + error);
 });
-console.log(window.navigator.userAgent);
+
 // action navigator
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
     const ua = window.navigator.userAgent.toLowerCase();
     console.log(ua);
     if(ua.indexOf('windows nt') !== -1){
