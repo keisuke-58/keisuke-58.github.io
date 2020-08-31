@@ -29,7 +29,7 @@ fetch('/digital-signage/image.json').then((response) => {
 
 // action navigator
 document.querySelector('section').addEventListener('click', () => {
-    document.querySelector('#message').classList.toggle('fade');
+    document.querySelector('.message').classList.toggle('fade');
 });
 
 // ----------------------------------
