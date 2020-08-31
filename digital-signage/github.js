@@ -108,5 +108,8 @@ if(isPwa()){
         window.addEventListener('keydown', () => {
             document.querySelector('.message').classList.toggle('fade');
         });
+        window.addEventListener('touchstart', () => {
+            document.querySelector('.message').classList.toggle('fade');
+        });
     }
 }
