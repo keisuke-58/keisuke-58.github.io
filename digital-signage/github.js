@@ -105,5 +105,8 @@ if(isPwa()){
         document.querySelector('.message').addEventListener('click', () => {
             document.querySelector('.message').classList.toggle('fade');
         });
+        window.addEventListener('keydown', () => {
+            document.querySelector('.message').classList.toggle('fade');
+        });
     }
 }
