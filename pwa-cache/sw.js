@@ -46,6 +46,6 @@ self.addEventListener('fetch', e => {
     // V2
     const url = new URL(e.request.url);
     if(url.origin == location.origin && url.pathname == '/pwa-cache/digital-signage-sample.jpg'){
-        e.respondWith(caches.match('/pwa-cache/digital-signage-sample-3.jpg'));
+        e.respondWith(caches.match('/pwa-cache/digital-signage-sample-2.jpg'));
     }
 });
