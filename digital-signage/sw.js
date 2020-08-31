@@ -64,6 +64,7 @@ self.addEventListener('activate', (e) => {
         caches.keys().then(keys => Promise.all(
             keys.map(key => {
                 if(!CACHE_ALLOWLIST.includes(key)){
+                    console.log(key);
                     return caches.delete(key);
                 }
             })
