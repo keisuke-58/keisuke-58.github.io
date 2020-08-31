@@ -30,6 +30,7 @@ fetch('/digital-signage/image.json').then((response) => {
 // action navigator
 window.addEventListener('DOMContentLoaded', () => {
     const ua = window.navigator.userAgent.toLowerCase();
+    console.log(ua);
     if(ua.indexOf('windows nt') !== -1){
         document.querySelector('body').insertAdjacentHTML('afterbegin', '<div class="message">「ALT + F4」で閉じる</div>');
         fadeEvent();
