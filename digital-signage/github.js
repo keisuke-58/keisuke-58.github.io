@@ -3,10 +3,12 @@
 // ----------------------------------
 
 // main DOM
-document.querySelector('body').insertAdjacentHTML('afterbegin', '<button id="addButton" style="display:none;">Add to home screen</button><section id="slider"></section>');
+let promise1 = new Promise(() => {
+    document.querySelector('body').insertAdjacentHTML('afterbegin', '<button id="addButton" style="display:none;">Add to home screen</button><section id="slider"></section>');
+});
 
 // 
-fetch('/digital-signage/image.json').then((response) => {
+let promise2 = fetch('/digital-signage/image.json').then((response) => {
     console.log(response);
     if(!response || response.status !== 200 || response.type !== 'basic'){ throw 'ini.json error'; }
     return response.json();
@@ -30,6 +32,8 @@ fetch('/digital-signage/image.json').then((response) => {
     console.log(error);
     alert('error : ' + error);
 });
+
+promise1.then(promise2);
 
 // ----------------------------------
 
