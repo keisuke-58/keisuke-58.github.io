@@ -31,10 +31,10 @@ fetch('/digital-signage/image.json').then((response) => {
 window.addEventListener('DOMContentLoaded', () => {
     const ua = window.navigator.userAgent.toLowerCase();
     if(ua.indexOf('windows nt') !== -1){
-        document.querySelector('.message').insertAdjacentHTML('afterbegin', '<div class="message">「ALT + F4」で閉じる</div>');
+        document.querySelector('body').insertAdjacentHTML('afterbegin', '<div class="message">「ALT + F4」で閉じる</div>');
         fadeEvent();
     }else if(ua.indexOf('mac os x') !== -1){
-        document.querySelector('.message').insertAdjacentHTML('afterbegin', '<div class="message">「command + Q」で閉じる</div>');
+        document.querySelector('body').insertAdjacentHTML('afterbegin', '<div class="message">「command + Q」で閉じる</div>');
         fadeEvent();
     }
 })
