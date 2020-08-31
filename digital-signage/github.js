@@ -87,8 +87,7 @@ function isPwa(){
     }
 }
 
-const isPwa = () =>
-    (window.matchMedia('(display-mode: standalone)').matches) || (window.matchMedia('(display-mode: fullscreen)').matches) || (window.navigator.standalone) || (window.navigator.fullscreen);
+const isPwa = () => (window.matchMedia('(display-mode: standalone)').matches) || (window.matchMedia('(display-mode: fullscreen)').matches) || (window.navigator.standalone) || (window.navigator.fullscreen);
 
 console.log(isPwa);
 console.log(window.matchMedia('(display-mode: standalone)').matches);
