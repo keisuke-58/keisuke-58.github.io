@@ -53,13 +53,13 @@ self.addEventListener('activate', (e) => {
     e.waitUntil(
         caches.keys().then((cacheName) => {
             console.log(cacheName);
-            /*return Promise.all(
+            return Promise.all(
                 cacheNames.map((cacheName) => {
                     if(CACHE_ALLOWLIST.indexOf(cacheName) !== -1){
                         return caches.delete(cacheName);
                     }
                 })
-            );*/
+            );
         })
         /*caches.keys().then(keys => Promise.all(
             keys.map(key => {

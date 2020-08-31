@@ -11,5 +11,5 @@ const URLS_TO_CACHE = [
     '/digital-signage/digital-signage-sample-2.jpg'
 ];
 const CACHE_ALLOWLIST = [
-    'k-58-digital-signage-v2'
+    'k-58-digital-signage-v1'
 ];
