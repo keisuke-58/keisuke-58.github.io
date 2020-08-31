@@ -2,6 +2,10 @@
 
 // ----------------------------------
 
+// main DOM
+document.querySelector('body').insertAdjacentHTML('afterbegin', '<button id="addButton" style="display:none;">Add to home screen</button><section id="slider"></section>');
+
+// 
 fetch('/digital-signage/image.json').then((response) => {
     console.log(response);
     if(!response || response.status !== 200 || response.type !== 'basic'){ throw 'ini.json error'; }
@@ -27,8 +31,6 @@ fetch('/digital-signage/image.json').then((response) => {
     alert('error : ' + error);
 });
 
-
-
 // ----------------------------------
 
 // Service Worker
@@ -45,7 +47,7 @@ if('serviceWorker' in navigator){
 // install button
 let deferredPrompt;
 let addBtn = document.querySelector('#addButton');
-addBtn.style.display = 'none';
+//addBtn.style.display = 'none';
 
 window.addEventListener('beforeinstallprompt', (event) => {
     console.log('beforeinstallprompt');
@@ -79,23 +81,19 @@ window.addEventListener('beforeinstallprompt', (event) => {
 
 // PWA script
 const isPwa = () => (window.matchMedia('(display-mode: standalone)').matches) || (window.matchMedia('(display-mode: fullscreen)').matches) || (window.navigator.standalone) || (window.navigator.fullscreen);
+//if(!isPwa()){ console.log('webapp is installed'); }
 
-if(!isPwa()){ console.log('webapp is installed'); }
-console.log(window.matchMedia('(display-mode: standalone)').matches);
-console.log(window.navigator.fullscreen);
-if(window.matchMedia('(display-mode: standalone)').matches || window.matchMedia('(display-mode: fullscreen)').matches){
+if(!isPwa()){
     // action navigator
-    window.addEventListener('load', () => {
-        const ua = window.navigator.userAgent.toLowerCase();
-        console.log(ua);
-        if(ua.indexOf('windows nt') !== -1){
-            document.querySelector('body').insertAdjacentHTML('afterbegin', '<div class="message">「ALT + F4」で閉じる</div>');
-            fadeEvent();
-        }else if(ua.indexOf('mac os x') !== -1){
-            document.querySelector('body').insertAdjacentHTML('afterbegin', '<div class="message">「command + Q」で閉じる</div>');
-            fadeEvent();
-        }
-    });
+    const ua = window.navigator.userAgent.toLowerCase();
+    console.log(ua);
+    if(ua.indexOf('windows nt') !== -1){
+        document.querySelector('body').insertAdjacentHTML('afterbegin', '<div class="message">「ALT + F4」で閉じる</div>');
+        fadeEvent();
+    }else if(ua.indexOf('mac os x') !== -1){
+        document.querySelector('body').insertAdjacentHTML('afterbegin', '<div class="message">「command + Q」で閉じる</div>');
+        fadeEvent();
+    }
     function fadeEvent(){
         document.querySelector('section').addEventListener('click', () => {
             document.querySelector('.message').classList.toggle('fade');
