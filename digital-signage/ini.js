@@ -5,7 +5,6 @@ const URLS_TO_CACHE = [
     '/digital-signage/github.js',
     '/digital-signage/style.css',
     '/digital-signage/ini.js',
-    '/digital-signage/action.js',
     '/digital-signage/android-chrome-192x192.png',
     '/digital-signage/android-chrome-512x512.png',
     '/digital-signage/digital-signage-sample.jpg',
