@@ -8,7 +8,7 @@ self.addEventListener('install', e => {
     // V1
     console.log('V1 install');
     e.waitUntil(
-        caches.open(CACHE_NAME).then(cache => cache.add('digital-signage-sample.jpg'))
+        caches.open(CACHE_NAME).then(cache => cache.add('/digital-signage-sample.jpg'))
     );
     
     // V2
@@ -39,8 +39,8 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
     // V1
     const url = new URL(e.request.url);
-    if(url.origin == location.origin && url.pathname == 'digital-signage-sample.jpg'){
-        e.respondWith(caches.match('digital-signage-sample-2.jpg'));
+    if(url.origin == location.origin && url.pathname == '/digital-signage-sample.jpg'){
+        e.respondWith(caches.match('/digital-signage-sample-2.jpg'));
     }
     
     // V2
