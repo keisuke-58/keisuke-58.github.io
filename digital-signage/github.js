@@ -83,7 +83,7 @@ window.addEventListener('beforeinstallprompt', (event) => {
 const isPwa = () => (window.matchMedia('(display-mode: standalone)').matches) || (window.matchMedia('(display-mode: fullscreen)').matches) || (window.navigator.standalone) || (window.navigator.fullscreen);
 //if(!isPwa()){ console.log('webapp is installed'); }
 
-if(!isPwa()){
+if(isPwa()){
     // action navigator
     const ua = window.navigator.userAgent.toLowerCase();
     console.log(ua);
