@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', () => {
         document.querySelector('body').insertAdjacentHTML('afterbegin', '<div class="message">「command + Q」で閉じる</div>');
         fadeEvent();
     }
-})
+});
 function fadeEvent(){
     document.querySelector('section').addEventListener('click', () => {
         document.querySelector('.message').classList.toggle('fade');
