@@ -31,6 +31,9 @@ fetch('/digital-signage/image.json').then((response) => {
 document.querySelector('section').addEventListener('click', () => {
     document.querySelector('.message').classList.toggle('fade');
 });
+document.querySelector('.message').addEventListener('click', () => {
+    document.querySelector('.message').classList.toggle('fade');
+});
 
 // ----------------------------------
 

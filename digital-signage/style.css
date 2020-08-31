@@ -23,6 +23,9 @@ body{
     background-color: lightgray;
     opacity: 0.5;
     -webkit-transition: -webkit-transform 1s;transition: -webkit-transform 1s;-o-transition: transform 1s;transition: transform 1s;transition: transform 1s, -webkit-transform 1s;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
 }
 .fade{
     -webkit-transform: translateY(100vh);-ms-transform: translateY(100vh);transform: translateY(100vh);
