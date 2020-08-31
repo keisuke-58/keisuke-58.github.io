@@ -78,8 +78,8 @@ window.addEventListener('beforeinstallprompt', (event) => {
 // ----------------------------------
 
 // PWA script
-console.log(window.matchMedia);
-if(window.matchMedia('(display-mode: fullscreen)').matches){
+console.log(window.matchMedia('(display-mode: standalone)').matches);
+if(window.matchMedia('(display-mode: standalone)').matches){
     // action navigator
     window.addEventListener('load', () => {
         const ua = window.navigator.userAgent.toLowerCase();
