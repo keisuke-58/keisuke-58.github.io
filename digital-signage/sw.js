@@ -4,36 +4,13 @@ importScripts('/digital-signage/ini.js');
 self.addEventListener('install', (e) => {
     e.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
-            //return cache.addAll(URLS_TO_CACHE);
-            return cache.add('/digital-signage/digital-signage-sample.jpg');
+            return cache.addAll(URLS_TO_CACHE);
         })
     );
-});
-
-self.addEventListener('activate', (e) => {
-    console.log('cache v1');
-    e.waitUntil(
-        caches.keys().then(keys => Promise.all(
-            keys.map(key => {
-                if(!expectedCaches.includes(key)){
-                    return caches.delete(key);
-                }
-            })
-        )).then(() => {
-            console.log('cache v2');
-        })
-    );
-});
-
-self.addEventListener('fetch', (e) => {
-    const url = new URL(e.request.url);
-    if(url.origin == location.origin && url.pathname == '/digital-signage/digital-signage-sample.jpg'){
-        e.respondWith(caches.match('/digital-signage/digital-signage-sample.jpg-2'));
-    }
 });
 
 // fetch cache load
-/*self.addEventListener('fetch', (e) => {
+self.addEventListener('fetch', (e) => {
     console.log(e.request.url);
     e.respondWith(
         caches.match(e.request).then((response) => {
@@ -69,28 +46,28 @@ self.addEventListener('fetch', (e) => {
             }
         })
     );
-});*/
+});
 
 // update service worker
-//self.addEventListener('activate', (e) => {
-    //e.waitUntil(
-        //caches.keys().then((cacheName) => {
-            //console.log(cacheName);
-            //return Promise.all(
-                //cacheNames.map((cacheName) => {
-                    //if(CACHE_ALLOWLIST.indexOf(cacheName) !== -1){
-                        //return caches.delete(cacheName);
-                    //}
-                //})
-            //);
-        //})
-        //caches.keys().then(keys => Promise.all(
-            //keys.map(key => {
-                //if(!CACHE_ALLOWLIST.includes(key)){
-                    //console.log(key);
-                    //return caches.delete(key);
-                //}
-            //})
-        //))
-    //);
-//});
+self.addEventListener('activate', (e) => {
+    e.waitUntil(
+        caches.keys().then((cacheName) => {
+            console.log(cacheName);
+            /*return Promise.all(
+                cacheNames.map((cacheName) => {
+                    if(CACHE_ALLOWLIST.indexOf(cacheName) !== -1){
+                        return caches.delete(cacheName);
+                    }
+                })
+            );*/
+        })
+        /*caches.keys().then(keys => Promise.all(
+            keys.map(key => {
+                if(!CACHE_ALLOWLIST.includes(key)){
+                    console.log(key);
+                    return caches.delete(key);
+                }
+            })
+        ))*/
+    );
+});

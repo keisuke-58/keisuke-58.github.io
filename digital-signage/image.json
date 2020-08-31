@@ -1,11 +1,11 @@
 {
     "slideImage" : {
         "landscape" : [
-            "/digital-signage/digital-signage-sample-3.jpg",
             "/digital-signage/digital-signage-sample.jpg",
             "/digital-signage/digital-signage-sample.jpg",
             "/digital-signage/digital-signage-sample.jpg",
-            "/digital-signage/digital-signage-sample.jpg"
+            "/digital-signage/digital-signage-sample.jpg",
+            "/digital-signage/digital-signage-sample-3.jpg"
         ],
         "portrait" : [
             "/digital-signage/digital-signage-sample-2.jpg",
