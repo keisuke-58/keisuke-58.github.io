@@ -48,20 +48,19 @@ self.addEventListener('fetch', (e) => {
     );
 });
 
-self.caches.keys().then(keys => { keys.forEach(key => console.log(key)) })
-
 // update service worker
 self.addEventListener('activate', (e) => {
     e.waitUntil(
         caches.keys().then((cacheName) => {
-            console.log(cacheName);
-            /*return Promise.all(
+            //console.log(cacheName);
+            return Promise.all(
                 cacheNames.map((cacheName) => {
                     if(CACHE_ALLOWLIST.indexOf(cacheName) !== -1){
+                        console.log(cacheName);
                         return caches.delete(cacheName);
                     }
                 })
-            );*/
+            );
         })
         /*caches.keys().then(keys => Promise.all(
             keys.map(key => {
