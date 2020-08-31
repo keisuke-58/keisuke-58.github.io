@@ -28,12 +28,25 @@ fetch('/digital-signage/image.json').then((response) => {
 });
 
 // action navigator
-document.querySelector('section').addEventListener('click', () => {
-    document.querySelector('.message').classList.toggle('fade');
-});
-document.querySelector('.message').addEventListener('click', () => {
-    document.querySelector('.message').classList.toggle('fade');
-});
+window.addEventListener('DOMContentLoaded', () => {
+    const ua = window.navigator.userAgent.toLowerCase();
+    if(ua.indexOf('windows nt') !== -1){
+        document.querySelector('.message').insertAdjacentHTML('afterbegin', '「ALT + F4」で閉じる');
+        fadeEvent();
+    }else if(ua.indexOf('mac os x') !== -1){
+        document.querySelector('.message').insertAdjacentHTML('afterbegin', '「command + Q」で閉じる');
+        fadeEvent();
+    }
+    
+})
+function fadeEvent(){
+    document.querySelector('section').addEventListener('click', () => {
+        document.querySelector('.message').classList.toggle('fade');
+    });
+    document.querySelector('.message').addEventListener('click', () => {
+        document.querySelector('.message').classList.toggle('fade');
+    });
+}
 
 // ----------------------------------
 
