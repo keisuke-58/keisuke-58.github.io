@@ -2,7 +2,7 @@
     "background_color" : "#FFFFFF",
     "theme_color" : "#FFFFFF",
     "description": "service worker example",
-    "display": "standalone",
+    "display": "fullscreen",
     "icons": [
         {
             "src" : "android-chrome-192x192.png",
