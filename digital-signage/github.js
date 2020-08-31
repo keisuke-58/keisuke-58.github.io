@@ -78,15 +78,6 @@ window.addEventListener('beforeinstallprompt', (event) => {
 // ----------------------------------
 
 // PWA script
-
-function isPwa(){
-    if(window.matchMedia('(display-mode: standalone)').matches || window.matchMedia('(display-mode: fullscreen)').matches){
-            
-    }else{
-        
-    }
-}
-
 const isPwa = () => (window.matchMedia('(display-mode: standalone)').matches) || (window.matchMedia('(display-mode: fullscreen)').matches) || (window.navigator.standalone) || (window.navigator.fullscreen);
 
 console.log(isPwa);
