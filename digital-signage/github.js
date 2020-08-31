@@ -27,6 +27,11 @@ fetch('/digital-signage/image.json').then((response) => {
     alert('error : ' + error);
 });
 
+// action navigator
+document.querySelector('section').addEventListener('click', () => {
+    document.querySelector('#message').classList.toggle('fade');
+});
+
 // ----------------------------------
 
 // Service Worker
