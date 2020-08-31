@@ -61,5 +61,12 @@ self.addEventListener('activate', (e) => {
                 })
             );*/
         })
+        /*caches.keys().then(keys => Promise.all(
+            keys.map(key => {
+                if(!expectedCaches.includes(key)){
+                    return caches.delete(key);
+                }
+            })
+        ))*/
     );
 });
