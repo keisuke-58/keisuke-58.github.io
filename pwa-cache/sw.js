@@ -14,7 +14,7 @@ self.addEventListener('install', e => {
     // V2
     console.log('V2 install');
     e.waitUntil(
-        caches.open('pwa-cache-v2').then(cache => cache.add('/pwa-cache/digital-signage-sample-2.jpg'));
+        caches.open('pwa-cache-v2').then(cache => cache.add('/pwa-cache/digital-signage-sample-3.jpg'));
     );
 });
 
@@ -46,6 +46,6 @@ self.addEventListener('fetch', e => {
     // V2
     const url = new URL(e.request.url);
     if(url.origin == location.origin && url.pathname == '/pwa-cache/digital-signage-sample.jpg'){
-        e.respondWith(caches.match('/pwa-cache/digital-signage-sample-2.jpg'));
+        e.respondWith(caches.match('/pwa-cache/digital-signage-sample-3.jpg'));
     }
 });
