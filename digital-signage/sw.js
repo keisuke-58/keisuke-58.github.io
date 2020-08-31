@@ -48,11 +48,11 @@ self.addEventListener('fetch', (e) => {
     );
 });
 
+self.caches.keys().then(keys => { keys.forEach(key => console.log(key)) })
+
 // update service worker
 self.addEventListener('activate', (e) => {
     e.waitUntil(
-        self.caches.keys().then(keys => { keys.forEach(key => console.log(key)) })
-        
         //caches.keys().then((cacheName) => {
             //console.log(cacheName);
             /*return Promise.all(
