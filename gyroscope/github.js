@@ -4,7 +4,7 @@
 
 // main DOM
 let promise1 = new Promise(() => {
-    document.querySelector('body').insertAdjacentHTML('afterbegin', '<button id="addButton" style="display:none;">Add to home screen</button><button id="start-button">start motion</button');
+    document.querySelector('body').insertAdjacentHTML('afterbegin', '<button id="addButton" style="display:none;">Add to home screen</button><button id="start-button">start motion</button>');
 });
 
 let gyro = {}
@@ -22,34 +22,45 @@ promise1.then(() => {
     }, true);*/
 });
 
-
+let timestamp = {}
+let now = new Date();
+let date = new Date();
+const next = 5000;
 const requestDeviceMotionPermission = () => {
-  if (
-    DeviceMotionEvent &&
-    typeof DeviceMotionEvent.requestPermission === 'function'
-  ) {
-    // iOS 13+ の Safari
-    // 許可を取得
-    DeviceMotionEvent.requestPermission()
-    .then(permissionState => {
-      if (permissionState === 'granted') {
-        // 許可を得られた場合、devicemotionをイベントリスナーに追加
-        window.addEventListener('devicemotion', e => {
-          // devicemotionのイベント処理
-            alert(e.rotationRate.gamma);
+    if(DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission === 'function'){
+        // iOS 13+ の Safari
+        // 許可を取得
+        DeviceMotionEvent.requestPermission().then((permissionState) => {
+            if(permissionState === 'granted'){
+                // 許可を得られた場合、devicemotionをイベントリスナーに追加
+                window.addEventListener('devicemotion', (e) => {
+                    // devicemotionのイベント処理
+                    //alert(e.rotationRate.gamma);
+                    if(timestamp['now'] !== undefined){
+                        timestamp = {
+                            now : date.getTime(),
+                            next : date.getTime() + next
+                        }
+                    }
+                    
+                    now = new Date();
+                    if(now.getTime() < timestamp['next']){
+                        alert('gamma : ' + e.rotationRate.gamma);
+                    }
+                });
+            }else{
+                // 許可を得られなかった場合の処理
+            }
+        }).catch((error) => {
+            // https通信でない場合などで許可を取得できなかった場合
         });
-      } else {
-        // 許可を得られなかった場合の処理
-      }
-    })
-    .catch(console.error) // https通信でない場合などで許可を取得できなかった場合
-  } else {
-    // 上記以外のブラウザ
-  }
+    }else{
+        // 上記以外のブラウザ
+    }
 }
 
 // ボタンクリックでrequestDeviceMotionPermission実行
-const startButton = document.getElementById("start-button")
+const startButton = document.querySelector('#start-button');
 startButton.addEventListener('click', requestDeviceMotionPermission, false)
 
 
