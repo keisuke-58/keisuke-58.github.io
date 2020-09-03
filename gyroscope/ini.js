@@ -6,10 +6,7 @@ const URLS_TO_CACHE = [
     '/gyroscope/style.css',
     '/gyroscope/ini.js',
     '/gyroscope/android-chrome-192x192.png',
-    '/gyroscope/android-chrome-512x512.png',
-    '/gyroscope/gyroscope-sample.jpg',
-    '/gyroscope/gyroscope-sample-2.jpg',
-    '/gyroscope/gyroscope-sample-3.jpg'
+    '/gyroscope/android-chrome-512x512.png'
 ];
 const CACHE_ALLOWLIST = [
     'k-58-gyroscope-v2'
