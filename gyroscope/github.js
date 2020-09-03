@@ -22,10 +22,12 @@ promise1.then(() => {
     }, true);*/
 });
 
-let timestamp = {}
-let now = new Date();
-let date = new Date();
 const next = 5000;
+let now = new Date();
+let timestamp = {
+    now : now.getTime(),
+    next : now.getTime() + next
+}
 const requestDeviceMotionPermission = () => {
     if(DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission === 'function'){
         // iOS 13+ の Safari
@@ -36,16 +38,14 @@ const requestDeviceMotionPermission = () => {
                 window.addEventListener('devicemotion', (e) => {
                     // devicemotionのイベント処理
                     //alert(e.rotationRate.gamma);
-                    if(timestamp['now'] !== undefined){
-                        timestamp = {
-                            now : date.getTime(),
-                            next : date.getTime() + next
-                        }
-                    }
                     
                     now = new Date();
-                    if(now.getTime() < timestamp['next']){
+                    if(now.getTime() > timestamp['next']){
                         alert('gamma : ' + e.rotationRate.gamma);
+                        timestamp = {
+                            now : now.getTime(),
+                            next : now.getTime() + next
+                        }
                     }
                 });
             }else{
