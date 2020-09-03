@@ -22,7 +22,6 @@ promise1.then(() => {
     }, true);*/
 });
 
-let gyro = {};
 const requestDeviceMotionPermission = () => {
     if(DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function'){
         // iOS 13+ の Safari
