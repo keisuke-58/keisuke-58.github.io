@@ -4,7 +4,7 @@
 
 // main DOM
 let promise1 = new Promise(() => {
-    document.querySelector('body').insertAdjacentHTML('afterbegin', '<button id="addButton" style="display:none;">Add to home screen</button><section id="gyro"><input type="txet" id="beforeGamma"></section><input type="txet" id="afterGamma"></section>');
+    document.querySelector('body').insertAdjacentHTML('afterbegin', '<button id="addButton" style="display:none;">Add to home screen</button><section id="gyro"><input type="txet" id="beforeGamma"><input type="txet" id="afterGamma"></section>');
 });
 
 let gyro = {}
