@@ -37,7 +37,6 @@ const requestDeviceMotionPermission = () => {
                         //alert('alpha : ' + e.rotationRate .alpha);
                         //alert('beta : ' + e.rotationRate.beta);
                         //alert('gamma : ' + e.rotationRate.gamma);
-                    }
                 });
             }else{
                 // 許可を得られなかった場合の処理
