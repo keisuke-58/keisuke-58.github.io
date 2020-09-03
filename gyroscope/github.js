@@ -10,7 +10,7 @@ let promise1 = new Promise(() => {
 let gyro = {}
 promise1.then(() => {
     window.addEventListener('deviceorientation', (event) => {
-        gyro['before'] = !gyro['after'] ? {} : gyro['after'];
+        /*gyro['before'] = !gyro['after'] ? {} : gyro['after'];
         gyro['after'] = {
             absolute : event.absolute,
             alpha : event.alpha,
@@ -18,7 +18,8 @@ promise1.then(() => {
             gamma : event.gamma
         }
         document.querySelector('#beforeGamma').value = gyro['before']['gamma'] === undefined ? '-' : gyro['before']['gamma'];
-        document.querySelector('#afterGamma').value = gyro['after']['gamma'];
+        document.querySelector('#afterGamma').value = gyro['after']['gamma'];*/
+        alert(event.gamma);
     }, true);
 });
 
