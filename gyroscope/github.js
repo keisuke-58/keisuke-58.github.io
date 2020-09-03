@@ -22,26 +22,20 @@ promise1.then(() => {
     }, true);*/
 });
 
-const next = 5000;
-let now = new Date();
-let timestamp = {
-    now : now.getTime(),
-    next : now.getTime() + next
-}
+let gyro = {}
 const requestDeviceMotionPermission = () => {
-    if(DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission === 'function'){
+    if(DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function'){
         // iOS 13+ の Safari
         // 許可を取得
-        DeviceMotionEvent.requestPermission().then((permissionState) => {
+        DeviceOrientationEvent.requestPermission().then((permissionState) => {
             if(permissionState === 'granted'){
                 // 許可を得られた場合、devicemotionをイベントリスナーに追加
-                window.addEventListener('devicemotion', (e) => {
+                window.addEventListener('deviceorientation', (e) => {
                     // devicemotionのイベント処理
-                    //alert(e.rotationRate.gamma);
                     
                     now = new Date();
                     if(now.getTime() > timestamp['next']){
-                        alert('x:' + e.acceleration.x + ', y:' + e.acceleration.y + ', z:' + e.acceleration.z);
+                        alert('x:' + e.x + ', y:' + e.y + ', z:' + e.z);
                         //alert('alpha : ' + e.rotationRate .alpha);
                         //alert('beta : ' + e.rotationRate.beta);
                         //alert('gamma : ' + e.rotationRate.gamma);
@@ -64,7 +58,7 @@ const requestDeviceMotionPermission = () => {
 
 // ボタンクリックでrequestDeviceMotionPermission実行
 const startButton = document.querySelector('#start-button');
-startButton.addEventListener('click', requestDeviceMotionPermission, false)
+startButton.addEventListener('click', requestDeviceMotionPermission, false);
 
 
 // ----------------------------------
