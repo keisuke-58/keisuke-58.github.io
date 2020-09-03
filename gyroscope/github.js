@@ -41,9 +41,10 @@ const requestDeviceMotionPermission = () => {
                     
                     now = new Date();
                     if(now.getTime() > timestamp['next']){
-                        alert('alpha : ' + e.rotationRate.alpha);
-                        alert('beta : ' + e.rotationRate.beta);
-                        alert('gamma : ' + e.rotationRate.gamma);
+                        alert('x:' + e.acceleration.x + ', y:' + e.acceleration.y + ', z:' + e.acceleration.z);
+                        //alert('alpha : ' + e.rotationRate .alpha);
+                        //alert('beta : ' + e.rotationRate.beta);
+                        //alert('gamma : ' + e.rotationRate.gamma);
                         timestamp = {
                             now : now.getTime(),
                             next : now.getTime() + next
