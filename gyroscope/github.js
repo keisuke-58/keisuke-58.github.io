@@ -32,7 +32,7 @@ const requestDeviceMotionPermission = () => {
                 window.addEventListener('deviceorientation', (e) => {
                     // devicemotionのイベント処理
                     
-                        alert('x:' + e.x + ', y:' + e.y + ', z:' + e.z);
+                        alert('x:' + e.alpha + ', y:' + e.beta + ', z:' + e.gamma);
                         //alert('alpha : ' + e.rotationRate .alpha);
                         //alert('beta : ' + e.rotationRate.beta);
                         //alert('gamma : ' + e.rotationRate.gamma);
