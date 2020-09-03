@@ -33,16 +33,10 @@ const requestDeviceMotionPermission = () => {
                 window.addEventListener('deviceorientation', (e) => {
                     // devicemotionのイベント処理
                     
-                    now = new Date();
-                    if(now.getTime() > timestamp['next']){
                         alert('x:' + e.x + ', y:' + e.y + ', z:' + e.z);
                         //alert('alpha : ' + e.rotationRate .alpha);
                         //alert('beta : ' + e.rotationRate.beta);
                         //alert('gamma : ' + e.rotationRate.gamma);
-                        timestamp = {
-                            now : now.getTime(),
-                            next : now.getTime() + next
-                        }
                     }
                 });
             }else{
