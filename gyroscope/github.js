@@ -3,13 +3,13 @@
 // ----------------------------------
 
 // main DOM
-/*let promise1 = new Promise(() => {
+let promise1 = new Promise(() => {
     document.querySelector('body').insertAdjacentHTML('afterbegin', '<button id="addButton" style="display:none;">Add to home screen</button><section id="gyro"><input type="txet" id="beforeGamma"><input type="txet" id="afterGamma"></section>');
 });
 
 let gyro = {}
 promise1.then(() => {
-    window.addEventListener('deviceorientation', (event) => {
+    /*window.addEventListener('deviceorientation', (event) => {
         gyro['before'] = !gyro['after'] ? {} : gyro['after'];
         gyro['after'] = {
             absolute : event.absolute,
@@ -19,8 +19,8 @@ promise1.then(() => {
         }
         document.querySelector('#beforeGamma').value = gyro['before']['gamma'] === undefined ? '-' : gyro['before']['gamma'];
         document.querySelector('#afterGamma').value = gyro['after']['gamma'];
-    }, true);
-});*/
+    }, true);*/
+});
 
 window.addEventListener('devicemotion', (event) => {
     alert(event.rotationRate.gamma);
