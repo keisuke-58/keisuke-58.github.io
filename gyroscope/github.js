@@ -37,7 +37,7 @@ const requestDeviceMotionPermission = () => {
         window.addEventListener('devicemotion', e => {
           // devicemotionのイベント処理
             alert(e.rotationRate.gamma);
-        };
+        });
       } else {
         // 許可を得られなかった場合の処理
       }
