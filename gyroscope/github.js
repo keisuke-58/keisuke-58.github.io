@@ -57,11 +57,13 @@ const requestDeviceOrientationPermission = () => {
                     }else if(compass >= 292 && compass <= 337){
                         nsew = '北西';   
                     }
+                    var horizontal = parseInt(x) === 90 || parseInt(x) === -90 ? '水平' : (parseInt(x) >= 0 ? parseInt(x) + '°' : (parseInt(x) * -1) + '°');
 
                     output.innerHTML  = "beta : " + x + "\n";
                     output.innerHTML += "gamma: " + y + "\n";
                     output.innerHTML += "alpha: " + z + "\n";
-                    output.innerHTML += "absolute: " + compass + "° " + nsew + "\n";
+                    output.innerHTML += "compass: " + compass + "° " + nsew + "\n";
+                    output.innerHTML += "horizontal: " + horizontal + "\n";
 
                     // デバイスをひっくり返したくはないため、
                     // x の値を -90 から 90 の範囲に制限する
