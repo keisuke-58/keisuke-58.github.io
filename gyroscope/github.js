@@ -37,9 +37,11 @@ const requestDeviceOrientationPermission = () => {
                         
                     var x = event.beta;  // -180 から 180 の範囲で角度を示す
                     var y = event.gamma; // -90 から 90 の範囲で角度を示す
+                    var z = event.alpha; // n0 から 360 の範囲で角度を示す
 
                     output.innerHTML  = "beta : " + x + "\n";
                     output.innerHTML += "gamma: " + y + "\n";
+                    output.innerHTML += "alpha: " + z + "\n";
 
                     // デバイスをひっくり返したくはないため、
                     // x の値を -90 から 90 の範囲に制限する
