@@ -27,8 +27,8 @@ section{
 
 .ball{
     position: absolute;
-    top   : 90px;
-    left  : 90px;
+    /*top   : 90px;
+    left  : 90px;*/
     width : 20px;
     height: 20px;
     background: green;
