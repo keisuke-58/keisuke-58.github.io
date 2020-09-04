@@ -6,53 +6,56 @@
 let promise1 = new Promise(() => {
     document.querySelector('body').insertAdjacentHTML('afterbegin', '<button id="addButton" style="display:none;">Add to home screen</button><button id="start-button">start motion</button>');
 });
+const startButton = document.querySelector('#start-button');
 
 promise1.then(() => {
-    var ball   = document.querySelector('.ball');
-    var garden = document.querySelector('.garden');
-    var output = document.querySelector('.output');
-    
-    var maxX = garden.clientWidth  - ball.clientWidth;
-    var maxY = garden.clientHeight - ball.clientHeight;
-    
-    if(DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function'){
-        // iOS 13+ の Safari
-        // 許可を取得
-        DeviceOrientationEvent.requestPermission().then((permissionState) => {
-            if(permissionState === 'granted'){
-                // 許可を得られた場合、devicemotionをイベントリスナーに追加
-                window.addEventListener('deviceorientation', (event) => {
-                    // devicemotionのイベント処理
-                    var x = event.beta;  // -180 から 180 の範囲で角度を示す
-                    var y = event.gamma; // -90 から 90 の範囲で角度を示す
+    startButton.addEventListener('click', () => {
+        var ball   = document.querySelector('.ball');
+        var garden = document.querySelector('.garden');
+        var output = document.querySelector('.output');
 
-                    output.innerHTML  = "beta : " + x + "\n";
-                    output.innerHTML += "gamma: " + y + "\n";
+        var maxX = garden.clientWidth  - ball.clientWidth;
+        var maxY = garden.clientHeight - ball.clientHeight;
 
-                    // デバイスをひっくり返したくはないため、
-                    // x の値を -90 から 90 の範囲に制限する
-                    if (x >  90) { x =  90};
-                    if (x < -90) { x = -90};
+        if(DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function'){
+            // iOS 13+ の Safari
+            // 許可を取得
+            DeviceOrientationEvent.requestPermission().then((permissionState) => {
+                if(permissionState === 'granted'){
+                    // 許可を得られた場合、devicemotionをイベントリスナーに追加
+                    window.addEventListener('deviceorientation', (event) => {
+                        // devicemotionのイベント処理
+                        var x = event.beta;  // -180 から 180 の範囲で角度を示す
+                        var y = event.gamma; // -90 から 90 の範囲で角度を示す
 
-                    // 計算を容易にするため、x および y の値の範囲を 
-                    // 0 から 180 に変換する
-                    x += 90;
-                    y += 90;
+                        output.innerHTML  = "beta : " + x + "\n";
+                        output.innerHTML += "gamma: " + y + "\n";
 
-                    // 10 は、ボールのサイズの半分である。
-                    // これにより、配置場所をボールの中心に合わせる
-                    ball.style.top  = (maxX*x/180 - 10) + "px";
-                    ball.style.left = (maxY*y/180 - 10) + "px";
-                });
-            }else{
-                // 許可を得られなかった場合の処理
-            }
-        }).catch((error) => {
-            // https通信でない場合などで許可を取得できなかった場合
-        });
-    }else{
-        // 上記以外のブラウザ
-    }
+                        // デバイスをひっくり返したくはないため、
+                        // x の値を -90 から 90 の範囲に制限する
+                        if (x >  90) { x =  90};
+                        if (x < -90) { x = -90};
+
+                        // 計算を容易にするため、x および y の値の範囲を 
+                        // 0 から 180 に変換する
+                        x += 90;
+                        y += 90;
+
+                        // 10 は、ボールのサイズの半分である。
+                        // これにより、配置場所をボールの中心に合わせる
+                        ball.style.top  = (maxX*x/180 - 10) + "px";
+                        ball.style.left = (maxY*y/180 - 10) + "px";
+                    });
+                }else{
+                    // 許可を得られなかった場合の処理
+                }
+            }).catch((error) => {
+                // https通信でない場合などで許可を取得できなかった場合
+            });
+        }else{
+            // 上記以外のブラウザ
+        }
+    });
 });
 
 /*const requestDeviceMotionPermission = () => {
