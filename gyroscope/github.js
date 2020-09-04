@@ -8,7 +8,12 @@ let promise1 = new Promise(() => {
 });
 
 promise1.then(() => {
-
+    let w = window.screen.width;
+    console.log(w);
+    document.querySelector('.garden').style.width = w + 'px';
+    document.querySelector('.garden').style.height = w + 'px';
+    document.querySelector('.ball').style.top = (w * 0.45) + 'px';
+    document.querySelector('.ball').style.left = (w * 0.45) + 'px';
 });
 
 const requestDeviceOrientationPermission = () => {
