@@ -11,7 +11,7 @@ promise1.then(() => {
 
 });
 
-const = requestDeviceOrientationPermission = () => {
+const requestDeviceOrientationPermission = () => {
     if(DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function'){
         // iOS 13+ の Safari
         // 許可を取得
