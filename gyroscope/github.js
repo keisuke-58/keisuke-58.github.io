@@ -57,7 +57,16 @@ const requestDeviceOrientationPermission = () => {
                     }else if(compass >= 292 && compass <= 337){
                         nsew = '北西';   
                     }
-                    var horizontal = parseInt(x) === 90 || parseInt(x) === -90 ? '水平' : (parseInt(x) >= 0 ? parseInt(x) + '°' : (parseInt(x) * -1) + '°');
+                    var horizontal = parseInt(x) >= 0 ? parseInt(x) : parseInt(x) * -1;
+                    switch(horizontal){
+                        case 0:
+                        case 90:
+                        case 180:
+                            horizontal = '水平';
+                            break;
+                        default:
+                            horizontal = horizontal + '°';
+                    }
 
                     output.innerHTML  = "beta : " + x + "\n";
                     output.innerHTML += "gamma: " + y + "\n";
