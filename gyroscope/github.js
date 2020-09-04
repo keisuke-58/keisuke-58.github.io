@@ -67,9 +67,8 @@ const requestDeviceOrientationPermission = () => {
 
 // ボタンクリックでrequestDeviceMotionPermission実行
 const startButton = document.querySelector('#start-button');
-startButton.addEventListener('click', requestDeviceMotionPermission.then((requestDeviceOrientationPermission) => {
-    
-}, false);
+startButton.addEventListener('click', requestDeviceMotionPermission, false);
+startButton.addEventListener('click', requestDeviceOrientationPermission, false);
 
 
 // ----------------------------------
