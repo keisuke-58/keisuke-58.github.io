@@ -38,11 +38,30 @@ const requestDeviceOrientationPermission = () => {
                     var x = event.beta;  // -180 から 180 の範囲で角度を示す
                     var y = event.gamma; // -90 から 90 の範囲で角度を示す
                     var z = event.alpha; // n0 から 360 の範囲で角度を示す
+                    var compass = parseInt(event.webkitCompassHeading);
+                    var nsew = '';
+                    if((compass >= 0 && compass <= 22) || (compass >= 338 && compass <= 360)){
+                        nsew = '北';   
+                    }else if(compass >= 23 && compass <= 66){
+                        nsew = '北東';   
+                    }else if(compass >= 67 && compass <= 112){
+                        nsew = '東';   
+                    }else if(compass >= 113 && compass <= 157){
+                        nsew = '南東';   
+                    }else if(compass >= 158 && compass <= 202){
+                        nsew = '南';   
+                    }else if(compass >= 202 && compass <= 247){
+                        nsew = '南西';   
+                    }else if(compass >= 247 && compass <= 292){
+                        nsew = '西';   
+                    }else if(compass >= 292 && compass <= 337){
+                        nsew = '北西';   
+                    }
 
                     output.innerHTML  = "beta : " + x + "\n";
                     output.innerHTML += "gamma: " + y + "\n";
                     output.innerHTML += "alpha: " + z + "\n";
-                    output.innerHTML += "absolute: " + event.webkitCompassHeading + "\n";
+                    output.innerHTML += "absolute: " + compass + "° " + nsew + "\n";
 
                     // デバイスをひっくり返したくはないため、
                     // x の値を -90 から 90 の範囲に制限する
@@ -71,54 +90,6 @@ const requestDeviceOrientationPermission = () => {
 }
 const startButton = document.querySelector('#start-button');
 startButton.addEventListener('click', requestDeviceOrientationPermission, false);
-
-/*const requestDeviceMotionPermission = () => {
-    if(DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission === 'function'){
-        // iOS 13+ の Safari
-        // 許可を取得
-        DeviceMotionEvent.requestPermission().then((permissionState) => {
-            if(permissionState === 'granted'){
-                // 許可を得られた場合、devicemotionをイベントリスナーに追加
-                window.addEventListener('devicemotion', (e) => {
-                    // devicemotionのイベント処理
-                    alert('x:' + e.acceleration.x + ', y:' + e.acceleration.y + ', z:' + e.acceleration.z);
-                });
-            }else{
-                // 許可を得られなかった場合の処理
-            }
-        }).catch((error) => {
-            // https通信でない場合などで許可を取得できなかった場合
-        });
-    }else{
-        // 上記以外のブラウザ
-    }
-}
-const requestDeviceOrientationPermission = () => {
-    if(DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function'){
-        // iOS 13+ の Safari
-        // 許可を取得
-        DeviceOrientationEvent.requestPermission().then((permissionState) => {
-            if(permissionState === 'granted'){
-                // 許可を得られた場合、devicemotionをイベントリスナーに追加
-                window.addEventListener('deviceorientation', (e) => {
-                    // devicemotionのイベント処理
-                    alert('alpha:' + e.alpha + ', beta:' + e.beta + ', gamma:' + e.gamma);
-                });
-            }else{
-                // 許可を得られなかった場合の処理
-            }
-        }).catch((error) => {
-            // https通信でない場合などで許可を取得できなかった場合
-        });
-    }else{
-        // 上記以外のブラウザ
-    }
-}
-
-// ボタンクリックでrequestDeviceMotionPermission実行
-const startButton = document.querySelector('#start-button');
-startButton.addEventListener('click', requestDeviceMotionPermission, false);
-startButton.addEventListener('click', requestDeviceOrientationPermission, false);*/
 
 
 // ----------------------------------
