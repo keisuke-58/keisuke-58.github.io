@@ -31,8 +31,7 @@ const requestDeviceMotionPermission = () => {
                 // 許可を得られた場合、devicemotionをイベントリスナーに追加
                 window.addEventListener('devicemotion', (e) => {
                     // devicemotionのイベント処理
-                    //alert('x:' + e.acceleration.x + ', y:' + e.acceleration.y + ', z:' + e.acceleration.z);
-                    alert(e);
+                    alert('x:' + e.acceleration.x + ', y:' + e.acceleration.y + ', z:' + e.acceleration.z);
                 });
             }else{
                 // 許可を得られなかった場合の処理
@@ -67,17 +66,11 @@ const requestDeviceOrientationPermission = () => {
 }
 
 // ボタンクリックでrequestDeviceMotionPermission実行
-
-
-/*const startButton = document.querySelector('#start-button');
-startButton.addEventListener('click', (requestDeviceMotionPermission) => {
-    requestDeviceOrientationPermission
-}, false);*/
-requestDeviceMotionPermission.then((requestDeviceOrientationPermission) => {
+const startButton = document.querySelector('#start-button');
+startButton.addEventListener('click', requestDeviceMotionPermission.then((requestDeviceOrientationPermission) => {
     
-}).catch((error) => {
-   alert(error); 
-});
+}, false);
+
 
 // ----------------------------------
 
