@@ -23,6 +23,7 @@ promise1.then(() => {
             DeviceOrientationEvent.requestPermission().then((permissionState) => {
                 if(permissionState === 'granted'){
                     // 許可を得られた場合、devicemotionをイベントリスナーに追加
+                    alert('start');
                     window.addEventListener('deviceorientation', (event) => {
                         // devicemotionのイベント処理
                         var x = event.beta;  // -180 から 180 の範囲で角度を示す
