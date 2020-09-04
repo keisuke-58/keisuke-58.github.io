@@ -23,6 +23,28 @@ promise1.then(() => {
 });
 
 const requestDeviceMotionPermission = () => {
+    if(DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission === 'function'){
+        // iOS 13+ の Safari
+        // 許可を取得
+        DeviceMotionEvent.requestPermission().then((permissionState) => {
+            if(permissionState === 'granted'){
+                // 許可を得られた場合、devicemotionをイベントリスナーに追加
+                window.addEventListener('devicemotion', (e) => {
+                    // devicemotionのイベント処理
+                    //alert('x:' + e.acceleration.x + ', y:' + e.acceleration.y + ', z:' + e.acceleration.z);
+                    alert(e);
+                });
+            }else{
+                // 許可を得られなかった場合の処理
+            }
+        }).catch((error) => {
+            // https通信でない場合などで許可を取得できなかった場合
+        });
+    }else{
+        // 上記以外のブラウザ
+    }
+}
+const requestDeviceOrientationPermission = () => {
     if(DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function'){
         // iOS 13+ の Safari
         // 許可を取得
@@ -31,11 +53,7 @@ const requestDeviceMotionPermission = () => {
                 // 許可を得られた場合、devicemotionをイベントリスナーに追加
                 window.addEventListener('deviceorientation', (e) => {
                     // devicemotionのイベント処理
-                    
-                        alert('x:' + e.alpha + ', y:' + e.beta + ', z:' + e.gamma);
-                        //alert('alpha : ' + e.rotationRate .alpha);
-                        //alert('beta : ' + e.rotationRate.beta);
-                        //alert('gamma : ' + e.rotationRate.gamma);
+                    alert('alpha:' + e.alpha + ', beta:' + e.beta + ', gamma:' + e.gamma);
                 });
             }else{
                 // 許可を得られなかった場合の処理
@@ -49,9 +67,17 @@ const requestDeviceMotionPermission = () => {
 }
 
 // ボタンクリックでrequestDeviceMotionPermission実行
-const startButton = document.querySelector('#start-button');
-startButton.addEventListener('click', requestDeviceMotionPermission, false);
 
+
+/*const startButton = document.querySelector('#start-button');
+startButton.addEventListener('click', (requestDeviceMotionPermission) => {
+    requestDeviceOrientationPermission
+}, false);*/
+requestDeviceMotionPermission.then((requestDeviceOrientationPermission) => {
+    
+}).catch((error) => {
+   alert(error); 
+});
 
 // ----------------------------------
 
