@@ -42,7 +42,7 @@ const requestDeviceOrientationPermission = () => {
                     output.innerHTML  = "beta : " + x + "\n";
                     output.innerHTML += "gamma: " + y + "\n";
                     output.innerHTML += "alpha: " + z + "\n";
-                    output.innerHTML += "absolute: " + event.absolute + "\n";
+                    output.innerHTML += "absolute: " + event.webkitCompassHeading + "\n";
 
                     // デバイスをひっくり返したくはないため、
                     // x の値を -90 から 90 の範囲に制限する
