@@ -18,7 +18,7 @@ document.querySelector('#loadingButton').addEventListener('click', () => {
         return response.json();
     }).then((json) => {
         console.log(json);
-        document.querySelector('body').insertAdjacentHTML('beforeend', '<div id="' + json[loadingType['id']] + '"></div>');
+        document.querySelector('body').insertAdjacentHTML('beforeend', '<div id="' + loadingType['id'] + '"></div>');
         return json;
     }).then((json) => {
         loading(true, json);
