@@ -20,10 +20,11 @@ document.querySelector('#loadingButton').addEventListener('click', () => {
 
 function loading(boolean, json){
     const loading = document.querySelector('#' + json['id']);
-    if(boolean === true){
-        loading.insertAdjacentHTML('beforeend', json['type']['html']);
-        loading.style.overflow = 'hidden';
-    }else{
-        loading.parentNode.removeChild(loading);
+    if(loading !== null){
+        if(boolean === true){
+            loading.insertAdjacentHTML('beforeend', json['type']['html']);
+        }else{
+            loading.parentNode.removeChild(loading);
+        }
     }
 }
