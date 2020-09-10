@@ -22,6 +22,7 @@ function loading(boolean, json){
     const loading = document.querySelector('#' + json['id']);
     if(boolean === true){
         loading.insertAdjacentHTML('beforeend', json['type']['html']);
+        loading.style.overflow = 'hidden';
     }else{
         loading.parentNode.removeChild(loading);
     }
