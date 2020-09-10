@@ -4,7 +4,7 @@
 
 document.querySelector('#loadingButton').addEventListener('click', () => {
     fetch('loading.json').then((response) => {
-        if(!response || response.status !== 200 || response.type !== 'basic'){ throw 'ini.json error'; }
+        if(!response || response.status !== 200 || response.type !== 'basic'){ throw 'loading.json error'; }
         return response.json();
     }).then((json) => {
         console.log(json);
@@ -22,9 +22,7 @@ function loading(boolean, json){
     const loading = document.querySelector('#' + json['id']);
     if(boolean === true){
         loading.insertAdjacentHTML('beforeend', json['type']['html']);
-        loading.style.display = 'block';
     }else{
-        loading.style.display = 'none';
-        loading.textContent = null;
+        loading.parentNode.removeChild(loading);
     }
 }
