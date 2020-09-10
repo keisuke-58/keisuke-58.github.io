@@ -19,7 +19,7 @@ document.querySelector('#loadingButton').addEventListener('click', () => {
 });
 
 function loading(boolean, json){
-    const loading = document.querySelector(json['id']);
+    const loading = document.querySelector('#' + json['id']);
     if(boolean === true){
         loading.insertAdjacentHTML('beforeend', json['type']['html']);
         loading.style.display = 'block';
