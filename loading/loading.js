@@ -10,7 +10,8 @@
 }).catch((error) => {
     console.log(error);
 });*/
-let loadingType = 'circle';
+//let loadingType = 'circle';
+let loadingType = 'circleSpinner';
 
 document.querySelector('#loadingButton').addEventListener('click', () => {
     console.log(loadingType);
