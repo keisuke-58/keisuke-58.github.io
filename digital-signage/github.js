@@ -43,7 +43,7 @@ if('serviceWorker' in navigator){
        navigator.serviceWorker.register('/digital-signage/sw.js').then((registration) => {
             console.log(registration.scope);
             registration.onupdatefound = () => {
-                alert('アップデートがあります！');
+                console.log('アップデートがあります');
                 registration.update();
                 location.reload(true);
             }
