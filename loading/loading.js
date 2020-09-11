@@ -2,14 +2,18 @@
 
 // ----------------------------------
 
-let loadingType = fetch('select-loading.json').then((response) => {
+/*let loadingType = fetch('select-loading.json').then((response) => {
     if(!response || response.status !== 200 || response.type !== 'basic'){ throw 'loading.json error'; }
     return response.json();
 }).then((json) => {
     loadingType = json;
 }).catch((error) => {
     console.log(error);
-});
+});*/
+let loadingType = {
+    id : 'loading',
+    type : 'circle'
+}
 
 document.querySelector('#loadingButton').addEventListener('click', () => {
     console.log(loadingType);
