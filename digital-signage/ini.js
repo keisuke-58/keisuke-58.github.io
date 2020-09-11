@@ -10,5 +10,5 @@ const URLS_TO_CACHE = [
     '/digital-signage/android-chrome-512x512.png'
 ];
 const CACHE_ALLOWLIST = [
-    'k-58-digital-signage-v11'
+    'k-58-digital-signage-v12'
 ];
