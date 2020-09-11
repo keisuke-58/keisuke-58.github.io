@@ -1,4 +1,8 @@
 {
+    "_remarks" : {
+        "id" : "ローディングイメージ用の親要素。<div id=\"[id]\"></div>",
+        "html" : "ローディングイメージ用の子要素。<div id=\"[id]\">[子要素HTML]</div>"
+    },
     "circle" : {
         "id" : "loading",
         "html" : "<div class=\"spinner\"><div class=\"bounce1\"></div><div class=\"bounce2\"></div><div class=\"bounce3\"></div></div>"
