@@ -5,12 +5,10 @@ const URLS_TO_CACHE = [
     '/digital-signage/github.js',
     '/digital-signage/style.css',
     '/digital-signage/ini.js',
+    '/digital-signage/image.json',
     '/digital-signage/android-chrome-192x192.png',
-    '/digital-signage/android-chrome-512x512.png',
-    '/digital-signage/digital-signage-sample.jpg',
-    '/digital-signage/digital-signage-sample-2.jpg',
-    '/digital-signage/digital-signage-sample-3.jpg'
+    '/digital-signage/android-chrome-512x512.png'
 ];
 const CACHE_ALLOWLIST = [
-    'k-58-digital-signage-v3'
+    'k-58-digital-signage-v11'
 ];

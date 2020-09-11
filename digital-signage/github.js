@@ -41,7 +41,12 @@ promise1.then(promise2);
 if('serviceWorker' in navigator){
    window.addEventListener('load', () => {
        navigator.serviceWorker.register('/digital-signage/sw.js').then((registration) => {
-           console.log(registration.scope);
+            console.log(registration.scope);
+            registration.onupdatefound = () => {
+                alert('アップデートがあります！');
+                registration.update();
+                location.reload(true);
+            }
        }, (error) => {
            console.log(error);
        });
