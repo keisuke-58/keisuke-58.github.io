@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>keisuke-58.github.io | recaptcha</title>
+    <meta name="discription" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
+    
+</head>
+<body>
+    <!--<form id="rc_form" method="post">
+        <button type="submit">送信</button>
+        <input type="hidden" name="recaptcha_response" id="my_token">
+        <input type="hidden" name="action" value="submit">
+    </form>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Ley3ssZAAAAAC-8d2CKf5r4cOionPxLAnIRjtK1"></script>
+    <script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6Ley3ssZAAAAAC-8d2CKf5r4cOionPxLAnIRjtK1', {action: 'submit'}).then(function(token) {
+            var token_input = document.getElementById('my_token');
+            token_input.value = token;
+        }).catch((e) => {
+            console.log(e);
+        });
+    });
+    </script>-->
+    <form id="rc_form" method="post">
+        <button type="submit">送信</button>
+    </form>
+    <script>
+    var rc_form = document.getElementById('rc_form');
+    //フォーム要素にイベントハンドラを設定
+    rc_form.onsubmit = function(event) {
+      //デフォルトの動作（送信）を停止
+      event.preventDefault();  
+      //トークンを取得
+      grecaptcha.ready(function() {
+        grecaptcha.execute('6Ley3ssZAAAAAC-8d2CKf5r4cOionPxLAnIRjtK1', {action: 'submit'}).then(function(token) {
+          var token_input = document.createElement('input'); //input 要素を生成
+          token_input.type = 'hidden';
+          token_input.name = 'g-recaptcha-response';
+          token_input.value = token; //トークンを値に設定
+          rc_form.appendChild(token_input);
+          var action_input = document.createElement('input'); //input 要素を生成
+          action_input.type = 'hidden';
+          action_input.name = 'action';
+          action_input.value = 'アクション名';  //アクション名を値に設定
+          rc_form.appendChild(action_input); 
+          rc_form.submit();  //フォームを送信
+        });
+      });
+    }
+    </script> 
+</body>
+</html>
