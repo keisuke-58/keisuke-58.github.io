@@ -19,6 +19,7 @@
         grecaptcha.execute('6Ley3ssZAAAAAC-8d2CKf5r4cOionPxLAnIRjtK1', {action: 'submit'}).then(function(token) {
             var token_input = document.getElementById('my_token');
             token_input.value = token;
+            console.log(token);
         }).catch((e) => {
             console.log(e);
         });
@@ -36,6 +37,7 @@
       //トークンを取得
       grecaptcha.ready(function() {
         grecaptcha.execute('6Ley3ssZAAAAAC-8d2CKf5r4cOionPxLAnIRjtK1', {action: 'submit'}).then(function(token) {
+            console.log(token);
           var token_input = document.createElement('input'); //input 要素を生成
           token_input.type = 'hidden';
           token_input.name = 'g-recaptcha-response';
