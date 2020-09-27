@@ -5,11 +5,7 @@
 let device;
 
 navigator.usb.requestDevice({
-    filters : [
-        {
-            vendorId : 0x054c
-        }
-    ]
+    filters : []
 }).then((selectedDevice) => {
     console.log(selectedDevice.productName);
     console.log(selectedDevice.manufacturerName);
