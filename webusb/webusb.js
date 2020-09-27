@@ -16,3 +16,18 @@ navigator.usb.getDevices().then((devices) => {
         console.log("Product name: " + device.productName + ", serial number " + device.serialNumber);
     });
 });
+
+let button = document.getElementById('request-device');
+button.addEventListener('click', async () => {
+    let device;
+    try{
+        device = await navigator.usb.requestDevice({filters : []});
+    }catch(e){
+        // No device was selected.
+        console.log(e);
+    }
+
+    if(device !== undefined){
+        // Add |device| to the UI.
+    }
+});
