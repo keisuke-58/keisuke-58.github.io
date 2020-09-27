@@ -23,7 +23,15 @@ let button = document.getElementById('request-device');
 button.addEventListener('click', async () => {
     let device;
     try{
-        device = await navigator.usb.requestDevice({filters : []});
+        device = await navigator.usb.requestDevice({
+            filters : [
+                {vendorId: 0x06c3, product_id: 0x054c}
+            ]
+        });
+        await device.configurations;
+        await device.open();
+        await device.selectConfiguration(1);
+        await device.claimInterface(0);
     }catch(e){
         // No device was selected.
         console.log(e);
