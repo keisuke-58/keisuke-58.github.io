@@ -10,8 +10,9 @@
     <script>
         //https://www.w3.org/TR/permissions-policy-1/
         const policy = document.permissionsPolicy;
-        const can_use_usb = policy.allowsFeature('usb');
-        console.log(can_use_usb);
+        console.log(policy);
+        //const can_use_usb = policy.allowsFeature('usb');
+        
         //https://example.comの新しいフレームでWebXRの使用が許可される場合はTrue
         console.log(policy.allowsFeature('xr-spatial-tracking', 'https://keisuke-58.github.io/webusb/'));
         const allowed_payment_origins = policy.getAllowlistForFeature('payment');
