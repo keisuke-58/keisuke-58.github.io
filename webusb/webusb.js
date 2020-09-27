@@ -1,11 +1,12 @@
 
 const VendorID = '0x054c';
 const ProductID = '0x06c3';
-const device = await navigator.usb.requestDevice({filters : [
 
-]});
-device.configurations;
-        
-//await device.open()
-//await device.selectConfiguration(1)
-//await device.claimInterface(0)
+navigator.usb.requestDevice({
+    filters : []
+}).then((device) => {
+    console.log(device.productName);
+    console.log(device.manufacturerName);
+}).catch((error) => {
+    console.log(error);
+});
