@@ -26,10 +26,10 @@ button.addEventListener('click', async () => {
         device = await navigator.usb.requestDevice({
             filters : []
         });
-        await device.configurations;
-        await device.open();
-        await device.selectConfiguration(1);
-        await device.claimInterface(0);
+        //await device.configurations;
+        //await device.open();
+        //await device.selectConfiguration(1);
+        //await device.claimInterface(0);
     }catch(e){
         // No device was selected.
         console.log(e);
