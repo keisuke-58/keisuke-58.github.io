@@ -24,9 +24,7 @@ button.addEventListener('click', async () => {
     let device;
     try{
         device = await navigator.usb.requestDevice({
-            filters : [
-                {vendorId: 0x06c3, product_id: 0x054c}
-            ]
+            filters : []
         });
         await device.configurations;
         await device.open();
