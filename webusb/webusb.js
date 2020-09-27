@@ -5,6 +5,10 @@
 document.addEventListener('DOMContentLoaded', async () => {
   let devices = await navigator.usb.getDevices();
   devices.forEach(device => {
-      console.log(device);
+      await navigator.usb.requestDevice({
+          filters : []
+      }).then((device) => {
+          console.log(device);
+      });
   });
 });
