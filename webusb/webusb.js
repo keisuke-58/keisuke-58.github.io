@@ -10,6 +10,8 @@
     });
 });*/
 
+console.log(typeof navigator.usb);
+
 navigator.usb.getDevices().then((devices) => {
     console.log("Total devices: " + devices.length);
     devices.forEach(device => {
