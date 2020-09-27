@@ -7,18 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <script src="webusb.js"></script>
-    <script>
-        //https://www.w3.org/TR/permissions-policy-1/
-        const policy = document.permissionsPolicy;
-        console.log(policy);
-        //const can_use_usb = policy.allowsFeature('usb');
-        
-        //https://example.comの新しいフレームでWebXRの使用が許可される場合はTrue
-        console.log(policy.allowsFeature('xr-spatial-tracking', 'https://keisuke-58.github.io/webusb/'));
-        const allowed_payment_origins = policy.getAllowlistForFeature('payment');
-        const all_features = policy.features();
-        console.log(all_features.includes('geolocation'));
-    </script>
 </head>
 <body>
 </body>
